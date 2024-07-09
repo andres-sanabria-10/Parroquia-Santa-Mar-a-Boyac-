@@ -14,6 +14,9 @@ app.get('/',(req,res)=>{
 })
 
 
+app.get('/Secretary', (req, res) => {
+  res.sendFile(path.join(__dirname, 'views', 'secretary.html'));
+});
 
 
 app.listen(app.get('PORT'),()=>console.log(`Server front in port ${app.get('PORT')}`))

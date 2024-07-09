@@ -70,7 +70,13 @@
     }
   }
 
- 
+  @media (max-width: 767px) {
+    #imagen {
+      width: 60vw; /* Ajusta el ancho al 100% del contenedor */
+      height: 70vh; /* Ajusta la altura automáticamente para mantener la proporción */
+      /* Otros estilos que desees aplicar */
+    }
+  }
   
   
   .imagen-highlight {
