@@ -20,13 +20,13 @@
 
 <body>
 
-    <div class="d-flex justify-content-between align-items-center mb-2" >
-        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none pe-5">
+    <div class="d-flex flex-column align-items-start ">
+        <a href="/" class="d-flex align-items-center  text-dark text-decoration-none pe-5">
             <img class="bi me-2 ms-3" width="50" height="42" src="/img/parroquia.png?v=1">
             <span class="fs-4">Parroquia de Santa María</span>
         </a>
-        <div class="d-flex justify-content-end me-3 mt-3">
-            <ul class="nav nav-pills">
+        <div class="d-flex justify-content-end w-100 me-3">
+            <ul class="nav nav-pills ">
                 <li class="nav-item">
                     <a class="nav-link" href="/" role="button">Inicio</a>
                 </li>
@@ -35,7 +35,8 @@
                         aria-expanded="false" aria-controls="collapseContent">Noticias</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#loginModal">Inicio de sesión</a>
+                    <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#loginModal">Inicio de
+                        sesión</a>
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#RegisterModal">Registro de
@@ -44,6 +45,7 @@
             </ul>
         </div>
     </div>
+
 
 
     <!-- Modal para iniciar sesión -->
@@ -66,12 +68,51 @@
                             <label for="password" class="form-label">Contraseña</label>
                             <input type="password" class="form-control" id="password" required>
                         </div>
+
+                        
+                            <div class="text-center">
+                                <a class="small"  href="#" data-bs-toggle="modal" data-bs-target="#RememberPassword">Recordar contraseña</a>
+                            </div>
+                   
+
                         <button type="submit" class="btn btn-primary">Iniciar sesión</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
+
+
+
+    <!-- Modal para recordar contraseña -->
+    <div class="modal fade" id="RememberPassword" tabindex="-1" aria-labelledby="RememberPass" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="RememberPass">Recordar Contraseña</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Formulario de inicio de sesión -->
+                    <form>
+                        <div class="mb-3">
+                            <label for="e" class="form-label">Correo Electrónico</label>
+                            <input type="email" class="form-control" id="CorreoelectronicRemember" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Confirmar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
 
     <!-- Modal para registro de usuario -->
     <div class="modal fade" id="RegisterModal" tabindex="-1" aria-labelledby="RegisterModalLabel" aria-hidden="true">
@@ -141,7 +182,7 @@
                         <div class="col-md-6 col-lg-11 mx-auto" style="background-color: antiquewhite; ">
 
 
-                            <center><img id="imagen" src="/img/evento.jpg" class="img-thumbnail "  alt="no carga">
+                            <center><img id="imagen" src="/img/evento.jpg" class="img-thumbnail " alt="no carga">
                             </center>
                         </div>
 
