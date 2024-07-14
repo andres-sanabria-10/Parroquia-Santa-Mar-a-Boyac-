@@ -69,11 +69,12 @@
                             <input type="password" class="form-control" id="password" required>
                         </div>
 
-                        
-                            <div class="text-center">
-                                <a class="small"  href="#" data-bs-toggle="modal" data-bs-target="#RememberPassword">Recordar contraseña</a>
-                            </div>
-                   
+
+                        <div class="text-center">
+                            <a class="small" href="#" data-bs-toggle="modal" data-bs-target="#RememberPassword">Recordar
+                                contraseña</a>
+                        </div>
+
 
                         <button type="submit" class="btn btn-primary">Iniciar sesión</button>
                     </form>
@@ -112,8 +113,6 @@
 
 
 
-
-
     <!-- Modal para registro de usuario -->
     <div class="modal fade" id="RegisterModal" tabindex="-1" aria-labelledby="RegisterModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
@@ -124,44 +123,79 @@
                 </div>
                 <div class="modal-body">
                     <!-- Formulario de registro de usuario -->
-                    <form>
-                        <div class="row">
-                            <div class="col-md-6 mb-3">
-                                <label for="docType" class="form-label">Tipo de documento</label>
-                                <select class="form-select" id="docType" required>
-                                    <option value="" selected disabled>Seleccione el tipo de documento</option>
-                                    <option value="cedula">Cédula</option>
-                                    <option value="tarjeta">Tarjeta de identidad</option>
-                                    <option value="registro">Registro de nacimiento</option>
-                                </select>
+                    <form id="registerForm">
+                        <div id="registerCarousel" class="carousel slide" data-bs-interval="false">
+                            <div class="carousel-inner">
+                                <!-- Paso 1: Correo electrónico -->
+                                <div class="carousel-item active">
+                                    <div class="mb-3">
+                                        <label for="email" class="form-label">Correo Electrónico</label>
+                                        <input type="email" class="form-control" id="email"
+                                            aria-describedby="emailHelp re" required>
+                                        <div id="emailHelp" class="form-text">Correo Electrónico que no esté asociado
+                                        </div>
+                                    </div>
+                                    <button type="button" class="btn btn-primary" id="verifyEmailBtn">Verificar y
+                                        Continuar</button>
+                                    <div id="emailVerificationMessage" class="mt-2"></div>
+                                </div>
+
+                                <!-- Paso 2: Código de verificación -->
+                                <div class="carousel-item">
+                                    <div class="mb-3">
+                                        <label for="verificationCode" class="form-label">Código de verificación</label>
+                                        <input type="text" class="form-control" id="verificationCode" required>
+                                        <div class="form-text">Ingrese el código de verificación enviado a su correo
+                                        </div>
+                                    </div>
+
+                                    <button type="button" class="btn btn-primary" onclick="verifyCode()">Verificar y
+                                        Continuar</button>
+                                    <div id="codeVerificationMessage" class="mt-2"></div>
+                                </div>
+
+                                <!-- Paso 3: Demás datos -->
+                                <div class="carousel-item">
+                                    <form id="registerForm">
+                                        <div class="mb-3">
+                                            <label for="name" class="form-label">Nombre</label>
+                                            <input type="text" class="form-control" id="name" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="lastName" class="form-label">Apellido</label>
+                                            <input type="text" class="form-control" id="lastName" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="birthdate" class="form-label">Fecha de nacimiento</label>
+                                            <input type="date" class="form-control" id="birthdate" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="docType" class="form-label">Tipo de documento</label>
+                                            <select class="form-select" id="docType" required>
+                                                <option value="" selected disabled>Seleccione el tipo de documento
+                                                </option>
+                                                <option value="cedula">Cédula</option>
+                                                <option value="tarjeta">Tarjeta de identidad</option>
+
+                                            </select>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="docNumber" class="form-label">Número de documento</label>
+                                            <input type="text" class="form-control" id="docNumber" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="password" class="form-label">Contraseña</label>
+                                            <input type="password" class="form-control" id="password" required>
+                                        </div>
+                                        <button type="button" class="btn btn-secondary"
+                                            onclick="previousSlide()">Anterior</button>
+                                        <button type="button" class="btn btn-primary" onclick="registerUser()">Crear
+                                            cuenta</button>
+                                    </form>
+                                    <div id="registerMessage" class="mt-2"></div>
+                                </div>
                             </div>
-
-                            <div class="col-md-6 mb-3">
-                                <label for="docNumber" class="form-label">Número de documento</label>
-                                <input type="text" class="form-control" id="docNumber" pattern="\d*" inputmode="numeric"
-                                    required oninput="this.value = this.value.replace(/[^0-9]/g, '')">
-                            </div>
                         </div>
-
-                        <div class="mb-3">
-                            <label for="birthdate" class="form-label">Fecha de nacimiento</label>
-                            <input type="date" class="form-control" id="birthdate" required>
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="exampleInputEmail1" class="form-label">Correo Electrónico</label>
-                            <input type="email" class="form-control" id="Correoelectronic" aria-describedby="emailHelp"
-                                required>
-                            <div id="emailHelp" class="form-text">Correo Electrónico, que no este asociado</div>
-                        </div>
-
-
-                        <div class="mb-3">
-                            <label for="password" class="form-label">Contraseña</label>
-                            <input type="password" class="form-control" id="password" required>
-                        </div>
-
-                        <button type="submit" class="btn btn-primary">Crear cuenta</button>
                     </form>
                 </div>
             </div>
@@ -271,6 +305,8 @@
 
 
     </script>
+
+    <script src="script.js"> </script>
 
 </body>
 
