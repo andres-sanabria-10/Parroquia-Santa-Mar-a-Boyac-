@@ -76,7 +76,7 @@
                         </div>
 
 
-                        <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+                        <button type="button" class="btn btn-primary" id="VerificacionDeLogin">Iniciar sesión</button>
                     </form>
                 </div>
             </div>
@@ -130,10 +130,8 @@
                                 <div class="carousel-item active">
                                     <div class="mb-3">
                                         <label for="email" class="form-label">Correo Electrónico</label>
-                                        <input type="email" class="form-control" id="email" aria-describedby="emailHelp"
-                                            required>
-                                        <div id="emailHelp" class="form-text">Correo Electrónico que no esté asociado
-                                        </div>
+                                        <input type="email" class="form-control" id="email" required>
+                                        <div id="emailHelp" class="form-text">Correo Electrónico que no esté asociado </div>
                                     </div>
                                     <button type="button" class="btn btn-primary" id="verifyEmailBtn">Verificar y
                                         Continuar</button>
@@ -149,6 +147,8 @@
                                         </div>
                                     </div>
 
+                                    <button type="button" class="btn btn-secondary"
+                                        onclick="previousSlide()">Anterior</button>
                                     <button type="button" class="btn btn-primary" onclick="verifyCode()">Verificar y
                                         Continuar</button>
                                     <div id="codeVerificationMessage" class="mt-2"></div>
@@ -308,7 +308,7 @@
 
 
     </script>
-
+    <script src="Login.js"></script>
     <script src="script.js"> </script>
 
 </body>

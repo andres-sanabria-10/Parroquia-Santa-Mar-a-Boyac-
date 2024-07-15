@@ -14,8 +14,16 @@ app.get('/',(req,res)=>{
 })
 
 
-app.get('/Secretary', (req, res) => {
+app.get('/Admin', (req, res) => {
   res.sendFile(path.join(__dirname, 'views', 'secretary.html'));
+});
+
+app.get('/SuperAdmin', (req, res) => {
+  res.sendFile(path.join(__dirname, 'views', 'SuperAdmin.html'));
+});
+
+app.get('/User', (req, res) => {
+  res.sendFile(path.join(__dirname, 'views', 'User.html'));
 });
 
 

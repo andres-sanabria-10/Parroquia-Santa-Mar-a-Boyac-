@@ -45,7 +45,7 @@ document.getElementById('verifyEmailBtn').addEventListener('click', async functi
             messageDiv.innerHTML = '<div class="alert alert-success">Código de verificación enviado. Por favor, revise su correo.</div>';
             nextSlide(); // Avanza al siguiente paso
         } else {
-            messageDiv.innerHTML = `<div class="alert alert-danger">${data.error}</div>`;
+            messageDiv.innerHTML = `<div class="alert alert-danger">Incluye un signo "@" en la dirección de correo electrónico. La dirección "${email}" no incluye el signo "@".</div>`;
         }
     } catch (error) {
         messageDiv.innerHTML = '<div class="alert alert-danger">Ocurrió un error. Por favor, intente de nuevo.</div>';
