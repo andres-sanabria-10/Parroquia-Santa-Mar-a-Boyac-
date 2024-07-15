@@ -136,17 +136,22 @@ function registerUser() {
         },
         body: JSON.stringify(userData),
     })
-    .then(response => response.json())
+    .then(response => {
+        if (!response.ok) {
+            return response.json().then(errorData => {
+                throw new Error(errorData.error);
+            });
+        }
+        return response.json();
+    })
     .then(data => {
         if (data.data) {
             messageDiv.innerHTML = '<div class="alert alert-success">Usuario registrado exitosamente.</div>';
             window.location.href = '/'; // Redireccionar a la vista 'index.html';
-        } else if (data.error) {
-            messageDiv.innerHTML = `<div class="alert alert-danger">${data.error}</div>`;
         }
     })
     .catch(error => {
-        messageDiv.innerHTML = '<div class="alert alert-danger">Ocurrió un error. Por favor, intente de nuevo.</div>';
+        messageDiv.innerHTML = `<div class="alert alert-danger">El numero de Documento ya existe</div>`;
         console.error('Error:', error);
     });
 }

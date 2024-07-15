@@ -115,7 +115,7 @@
 
     <!-- Modal para registro de usuario -->
     <div class="modal fade" id="RegisterModal" tabindex="-1" aria-labelledby="RegisterModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog modal-dialog-scrollable modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="RegisterModalLabel">Registro de usuarios</h5>
@@ -130,8 +130,8 @@
                                 <div class="carousel-item active">
                                     <div class="mb-3">
                                         <label for="email" class="form-label">Correo Electrónico</label>
-                                        <input type="email" class="form-control" id="email"
-                                            aria-describedby="emailHelp re" required>
+                                        <input type="email" class="form-control" id="email" aria-describedby="emailHelp"
+                                            required>
                                         <div id="emailHelp" class="form-text">Correo Electrónico que no esté asociado
                                         </div>
                                     </div>
@@ -154,41 +154,44 @@
                                     <div id="codeVerificationMessage" class="mt-2"></div>
                                 </div>
 
-                                <!-- Paso 3: Demás datos -->
+                                <!-- Paso 3:  Datos personales -->
                                 <div class="carousel-item">
                                     <form id="registerForm">
-                                        <div class="mb-3">
-                                            <label for="name" class="form-label">Nombre</label>
-                                            <input type="text" class="form-control" id="name" required>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="lastName" class="form-label">Apellido</label>
-                                            <input type="text" class="form-control" id="lastName" required>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="birthdate" class="form-label">Fecha de nacimiento</label>
-                                            <input type="date" class="form-control" id="birthdate" required>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="docType" class="form-label">Tipo de documento</label>
-                                            <select class="form-select" id="docType" required>
-                                                <option value="" selected disabled>Seleccione el tipo de documento
-                                                </option>
-                                                <option value="cedula">Cédula</option>
-                                                <option value="tarjeta">Tarjeta de identidad</option>
+                                        <div class="row">
+                                            <div class="mb-3 col-md-6">
+                                                <label for="name" class="form-label">Nombre</label>
+                                                <input type="text" class="form-control" id="name" required>
+                                            </div>
+                                            <div class="mb-3 col-md-6">
+                                                <label for="lastName" class="form-label">Apellido</label>
+                                                <input type="text" class="form-control" id="lastName" required>
+                                            </div>
 
-                                            </select>
+                                            <div class="mb-3 col-md-6">
+                                                <label for="birthdate" class="form-label">Fecha de nacimiento</label>
+                                                <input type="date" class="form-control" id="birthdate" required>
+                                            </div>
+                                            <div class="mb-3 col-md-6">
+                                                <label for="docType" class="form-label">Tipo de documento</label>
+                                                <select class="form-select" id="docType" required>
+                                                    <option value="" selected disabled>Seleccione el tipo de documento
+                                                    </option>
+                                                    <option value="cedula">Cédula</option>
+                                                    <option value="tarjeta">Tarjeta de identidad</option>
+
+                                                </select>
+                                            </div>
+
+                                            <div class="mb-3 col-md-6">
+                                                <label for="docNumber" class="form-label">Número de documento</label>
+                                                <input type="text" class="form-control" id="docNumber" required>
+                                            </div>
+                                            <div class="mb-3 col-md-6">
+                                                <label for="password" class="form-label">Contraseña</label>
+                                                <input type="password" class="form-control" id="password" required>
+                                            </div>
                                         </div>
-                                        <div class="mb-3">
-                                            <label for="docNumber" class="form-label">Número de documento</label>
-                                            <input type="text" class="form-control" id="docNumber" required>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="password" class="form-label">Contraseña</label>
-                                            <input type="password" class="form-control" id="password" required>
-                                        </div>
-                                        <button type="button" class="btn btn-secondary"
-                                            onclick="previousSlide()">Anterior</button>
+
                                         <button type="button" class="btn btn-primary" onclick="registerUser()">Crear
                                             cuenta</button>
                                     </form>
