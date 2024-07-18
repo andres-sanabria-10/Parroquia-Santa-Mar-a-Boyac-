@@ -115,7 +115,7 @@
 
     <!-- Modal para registro de usuario -->
     <div class="modal fade" id="RegisterModal" tabindex="-1" aria-labelledby="RegisterModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-scrollable modal-lg">
+        <div class="modal-dialog  modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="RegisterModalLabel">Registro de usuarios</h5>
@@ -156,23 +156,23 @@
                                 </div>
 
                                 <!-- Paso 3:  Datos personales -->
-                                <div class="carousel-item" style="max-height: 60vh; overflow-y: auto;">
+                                <div class="carousel-item" style=" overflow-y: auto; overflow-x: hidden;">
                                     <form id="registerForm">
                                         <div class="row">
-                                            <div class="mb-3 col-md-6 col-12">
+                                            <div class="mb-3 col-md-6 ">
                                                 <label for="name" class="form-label">Nombre</label>
                                                 <input type="text" class="form-control" id="name" required>
                                             </div>
-                                            <div class="mb-3 col-md-6">
+                                            <div class="mb-3 col-md-6  ">
                                                 <label for="lastName" class="form-label">Apellido</label>
                                                 <input type="text" class="form-control" id="lastName" required>
                                             </div>
 
-                                            <div class="mb-3 col-md-6">
+                                            <div class="mb-3 col-md-6  ">
                                                 <label for="birthdate" class="form-label">Fecha de nacimiento</label>
                                                 <input type="date" class="form-control" id="birthdate" required>
                                             </div>
-                                            <div class="mb-3 col-md-6">
+                                            <div class="mb-3 col-md-6  ">
                                                 <label for="docType" class="form-label">Tipo de documento</label>
                                                 <select class="form-select" id="docType" required>
                                                     <option value="" selected disabled>Seleccione el tipo de documento
@@ -183,11 +183,11 @@
                                                 </select>
                                             </div>
 
-                                            <div class="mb-3 col-md-6">
+                                            <div class="mb-3 col-md-6  ">
                                                 <label for="docNumber" class="form-label">Número de documento</label>
                                                 <input type="text" class="form-control" id="docNumber" required>
                                             </div>
-                                            <div class="mb-3 col-md-6">
+                                            <div class="mb-3 col-md-6  ">
                                                 <label for="password" class="form-label">Contraseña</label>
                                                 <input type="password" class="form-control" id="password" required>
                                             </div>
@@ -196,7 +196,7 @@
                                         <button type="button" class="btn btn-primary" onclick="registerUser()">Crear
                                             cuenta</button>
                                     </form>
-                                    <div id="registerMessage" class="mt-2"></div>
+                                    <div id="registerMessage" class=" col-md-6 col-sm-3 mt-2"></div>
                                 </div>
                             </div>
                         </div>
