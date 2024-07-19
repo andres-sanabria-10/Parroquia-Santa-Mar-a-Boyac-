@@ -5,7 +5,7 @@ function nextSlide() {
 
     if (!isSecondStep) {
         carousel.next();
-        
+
     }
     // Si es el segundo paso, no avanzamos automáticamente. La función verifyCode() se encargará de avanzar si la verificación es exitosa.
 }
@@ -13,7 +13,7 @@ function nextSlide() {
 function nextSlide() {
     const carousel = new bootstrap.Carousel(document.getElementById('registerCarousel'));
     carousel.next();
-   
+
 }
 
 function previousSlide() {
@@ -21,7 +21,12 @@ function previousSlide() {
     carousel.prev();
 }
 
-document.getElementById('verifyEmailBtn').addEventListener('click', async function() {
+function previousSlideResetPassword() {
+    const carousel = new bootstrap.Carousel(document.getElementById('rememberPasswordCarousel'));
+    carousel.prev();
+}
+
+document.getElementById('verifyEmailBtn').addEventListener('click', async function () {
     const email = document.getElementById('email').value;
     const messageDiv = document.getElementById('emailVerificationMessage');
 
@@ -77,13 +82,133 @@ function verifyCode() {
         },
         body: JSON.stringify({ mail: email, verificationCode: verificationCode }),
     })
+        .then(response => response.json())
+        .then(data => {
+            if (data.message) {
+                messageDiv.innerHTML = `<div class="alert alert-success">${data.message}</div>`;
+                nextSlide(); // Avanza al siguiente paso si la verificación es exitosa
+            } else {
+                messageDiv.innerHTML = `<div class="alert alert-danger">${data.error}</div>`;
+            }
+        })
+        .catch(error => {
+            messageDiv.innerHTML = '<div class="alert alert-danger">Ocurrió un error. Por favor, intente de nuevo.</div>';
+            console.error('Error:', error);
+        });
+}
+
+
+
+
+
+
+
+//recordar contraseña verificar codigo
+function forgotPassword() {
+    const email = document.getElementById('CorreoelectronicRemember').value;
+    fetch('https://api-parroquia.onrender.com/auth/forgot-password', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ mail: email }),
+    })
+    .then(response => {
+        if (response.ok) {
+            nextSlideRemember();
+        } else {
+            throw new Error(response.statusText);
+        }
+    })
+    .catch(error => {
+        const messageDiv = document.getElementById('codeVerificationMessage');
+        messageDiv.innerHTML = `<div class="alert alert-danger">Error al enviar el código. Por favor, intente de nuevo.</div>`;
+        console.error('Error:', error);
+    });
+}
+
+function verifyCodeRememberpassword() {
+    const email = document.getElementById('CorreoelectronicRemember').value;
+    const resetCode = document.getElementById('verificationCodeRememberpassword').value;
+    const messageDiv = document.getElementById('codeVerificationMessage');
+
+    if (!resetCode) {
+        messageDiv.innerHTML = '<div class="alert alert-danger">Por favor, ingrese el código de verificación.</div>';
+        return;
+    }
+
+    fetch('https://api-parroquia.onrender.com/auth/verify-ResetCode', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ mail: email, resetCode: resetCode }),
+    })
+    .then(response => {
+        if (!response.ok) {
+            return response.json().then(err => { throw err; });
+        }
+        return response.json();
+    })
+    .then(data => {
+        if (data.message === 'Código válido') {
+            messageDiv.innerHTML = '<div class="alert alert-success">Código verificado correctamente.</div>';
+            // Guardamos el email para usarlo en el reseteo de contraseña
+            localStorage.setItem('resetEmail', email);
+            nextSlideRemember(); // Avanzar al slide de cambio de contraseña
+        } else {
+            messageDiv.innerHTML = '<div class="alert alert-danger">Código inválido o expirado.</div>';
+        }
+    })
+    .catch(error => {
+        messageDiv.innerHTML = `<div class="alert alert-danger">${error.message || 'Ocurrió un error. Por favor, intente de nuevo.'}</div>`;
+        console.error('Error:', error);
+    });
+}
+
+function resetPassword() {
+    const newPassword = document.getElementById('newPassword').value;
+    const confirmPassword = document.getElementById('confirmPassword').value;
+    const messageDiv = document.getElementById('passwordResetMessage');
+    const email = localStorage.getItem('resetEmail'); // Recuperamos el correo electrónico guardado
+
+    if (newPassword !== confirmPassword) {
+        messageDiv.innerHTML = '<div class="alert alert-danger">Las contraseñas no coinciden.</div>';
+        return;
+    }
+
+    fetch('https://api-parroquia.onrender.com/auth/change-Password', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ mail: email, newPassword: newPassword }),
+    })
     .then(response => response.json())
     .then(data => {
         if (data.message) {
-            messageDiv.innerHTML = `<div class="alert alert-success">${data.message}</div>`;
-            nextSlide(); // Avanza al siguiente paso si la verificación es exitosa
+            // Usar SweetAlert2 para mostrar el mensaje
+            Swal.fire({
+                title: 'Contraseña restablecida',
+                text: 'Su contraseña ha sido restablecida con éxito. Por favor, inicie sesión con su nueva contraseña.',
+                icon: 'success',
+                confirmButtonText: 'Iniciar sesión',
+                customClass: {
+                    confirmButton: 'btn btn-primary'
+                }
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Mostrar el modal de inicio de sesión
+                    var loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
+                    loginModal.show();
+                    
+                    // Opcionalmente cerrar el modal actual
+                    var rememberPasswordModal = bootstrap.Modal.getInstance(document.getElementById('RememberPassword'));
+                    rememberPasswordModal.hide();
+                }
+            });
         } else {
-            messageDiv.innerHTML = `<div class="alert alert-danger">${data.error}</div>`;
+            messageDiv.innerHTML = `<div class="alert alert-danger">${data.error || 'Error al cambiar la contraseña.'}</div>`;
         }
     })
     .catch(error => {
@@ -91,6 +216,18 @@ function verifyCode() {
         console.error('Error:', error);
     });
 }
+
+function nextSlideRemember() {
+    const carousel = new bootstrap.Carousel(document.getElementById('rememberPasswordCarousel'));
+    carousel.next();
+}
+
+// Event listeners
+document.getElementById('rememberPassword').addEventListener('click', forgotPassword);
+
+
+
+
 
 
 
@@ -123,10 +260,10 @@ function registerUser() {
         lastName,
         birthdate,
         documentNumber,
-        typeDocument:typeDocumentID,
+        typeDocument: typeDocumentID,
         mail: email,
         password,
-        role:"Usuario"
+        role: "Usuario"
     };
 
     fetch('https://api-parroquia.onrender.com/auth/register', {
@@ -136,24 +273,24 @@ function registerUser() {
         },
         body: JSON.stringify(userData),
     })
-    .then(response => {
-        if (!response.ok) {
-            return response.json().then(errorData => {
-                throw new Error(errorData.error);
-            });
-        }
-        return response.json();
-    })
-    .then(data => {
-        if (data.data) {
-            messageDiv.innerHTML = '<div class="alert alert-success">Usuario registrado exitosamente.</div>';
-            window.location.href = '/'; // Redireccionar a la vista 'index.html';
-        }
-    })
-    .catch(error => {
-        messageDiv.innerHTML = `<div class="alert alert-danger">El numero de Documento ya existe</div>`;
-        console.error('Error:', error);
-    });
+        .then(response => {
+            if (!response.ok) {
+                return response.json().then(errorData => {
+                    throw new Error(errorData.error);
+                });
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (data.data) {
+                messageDiv.innerHTML = '<div class="alert alert-success">Usuario registrado exitosamente.</div>';
+                window.location.href = '/'; // Redireccionar a la vista 'index.html';
+            }
+        })
+        .catch(error => {
+            messageDiv.innerHTML = `<div class="alert alert-danger">El numero de Documento ya existe</div>`;
+            console.error('Error:', error);
+        });
 }
 
 // Asegúrate de que el botón "Crear cuenta" en el tercer paso llame a esta función
@@ -168,7 +305,7 @@ const getAllDocumentData = async () => {
                 'Content-Type': 'application/json'
             }
         });
-        
+
         // Verificar si la respuesta es exitosa
         if (!response.ok) {
             console.error('Error fetching documents:', response.statusText);
