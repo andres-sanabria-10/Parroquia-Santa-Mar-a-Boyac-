@@ -30,8 +30,16 @@ document.getElementById('verifyEmailBtn').addEventListener('click', async functi
     const email = document.getElementById('email').value;
     const messageDiv = document.getElementById('emailVerificationMessage');
 
+    // Validación del correo electrónico
     if (!email) {
         messageDiv.innerHTML = '<div class="alert alert-danger">Por favor, ingrese un correo electrónico.</div>';
+        return;
+    }
+
+    // Validación simple de formato de correo electrónico
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        messageDiv.innerHTML = '<div class="alert alert-danger">Por favor, ingrese un correo electrónico válido.</div>';
         return;
     }
 
@@ -50,10 +58,20 @@ document.getElementById('verifyEmailBtn').addEventListener('click', async functi
             messageDiv.innerHTML = '<div class="alert alert-success">Código de verificación enviado. Por favor, revise su correo.</div>';
             nextSlide(); // Avanza al siguiente paso
         } else {
-            messageDiv.innerHTML = `<div class="alert alert-danger">Incluye un signo "@" en la dirección de correo electrónico. La dirección "${email}" no incluye el signo "@".</div>`;
+            // Manejo de errores específicos del servidor
+            switch(data.error) {
+                case 'EMAIL_EXISTS':
+                    messageDiv.innerHTML = '<div class="alert alert-danger">Este correo electrónico ya está registrado.</div>';
+                    break;
+                case 'INVALID_EMAIL':
+                    messageDiv.innerHTML = '<div class="alert alert-danger">El correo electrónico ingresado no es válido.</div>';
+                    break;
+                default:
+                    messageDiv.innerHTML = `<div class="alert alert-danger">${data.error || 'Ocurrió un error. Por favor, intente de nuevo.'}</div>`;
+            }
         }
     } catch (error) {
-        messageDiv.innerHTML = '<div class="alert alert-danger">Ocurrió un error. Por favor, intente de nuevo.</div>';
+        messageDiv.innerHTML = '<div class="alert alert-danger">Error de conexión. Por favor, intente de nuevo más tarde.</div>';
     }
 });
 
@@ -68,7 +86,7 @@ document.getElementById('registerCarousel').addEventListener('slide.bs.carousel'
 function verifyCode() {
     const email = document.getElementById('email').value; // Asumiendo que guardamos el email del paso anterior
     const verificationCode = document.getElementById('verificationCode').value;
-    const messageDiv = document.getElementById('codeVerificationMessage');
+    const messageDiv = document.getElementById('emailVerificationMessage');
 
     if (!verificationCode) {
         messageDiv.innerHTML = '<div class="alert alert-danger">Por favor, ingrese el código de verificación.</div>';
@@ -102,128 +120,6 @@ function verifyCode() {
 
 
 
-
-//recordar contraseña verificar codigo
-function forgotPassword() {
-    const email = document.getElementById('CorreoelectronicRemember').value;
-    fetch('https://api-parroquia.onrender.com/auth/forgot-password', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ mail: email }),
-    })
-    .then(response => {
-        if (response.ok) {
-            nextSlideRemember();
-        } else {
-            throw new Error(response.statusText);
-        }
-    })
-    .catch(error => {
-        const messageDiv = document.getElementById('codeVerificationMessage');
-        messageDiv.innerHTML = `<div class="alert alert-danger">Error al enviar el código. Por favor, intente de nuevo.</div>`;
-        console.error('Error:', error);
-    });
-}
-
-function verifyCodeRememberpassword() {
-    const email = document.getElementById('CorreoelectronicRemember').value;
-    const resetCode = document.getElementById('verificationCodeRememberpassword').value;
-    const messageDiv = document.getElementById('codeVerificationMessage');
-
-    if (!resetCode) {
-        messageDiv.innerHTML = '<div class="alert alert-danger">Por favor, ingrese el código de verificación.</div>';
-        return;
-    }
-
-    fetch('https://api-parroquia.onrender.com/auth/verify-ResetCode', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ mail: email, resetCode: resetCode }),
-    })
-    .then(response => {
-        if (!response.ok) {
-            return response.json().then(err => { throw err; });
-        }
-        return response.json();
-    })
-    .then(data => {
-        if (data.message === 'Código válido') {
-            messageDiv.innerHTML = '<div class="alert alert-success">Código verificado correctamente.</div>';
-            // Guardamos el email para usarlo en el reseteo de contraseña
-            localStorage.setItem('resetEmail', email);
-            nextSlideRemember(); // Avanzar al slide de cambio de contraseña
-        } else {
-            messageDiv.innerHTML = '<div class="alert alert-danger">Código inválido o expirado.</div>';
-        }
-    })
-    .catch(error => {
-        messageDiv.innerHTML = `<div class="alert alert-danger">${error.message || 'Ocurrió un error. Por favor, intente de nuevo.'}</div>`;
-        console.error('Error:', error);
-    });
-}
-
-function resetPassword() {
-    const newPassword = document.getElementById('newPassword').value;
-    const confirmPassword = document.getElementById('confirmPassword').value;
-    const messageDiv = document.getElementById('passwordResetMessage');
-    const email = localStorage.getItem('resetEmail'); // Recuperamos el correo electrónico guardado
-
-    if (newPassword !== confirmPassword) {
-        messageDiv.innerHTML = '<div class="alert alert-danger">Las contraseñas no coinciden.</div>';
-        return;
-    }
-
-    fetch('https://api-parroquia.onrender.com/auth/change-Password', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ mail: email, newPassword: newPassword }),
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.message) {
-            // Usar SweetAlert2 para mostrar el mensaje
-            Swal.fire({
-                title: 'Contraseña restablecida',
-                text: 'Su contraseña ha sido restablecida con éxito. Por favor, inicie sesión con su nueva contraseña.',
-                icon: 'success',
-                confirmButtonText: 'Iniciar sesión',
-                customClass: {
-                    confirmButton: 'btn btn-primary'
-                }
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    // Mostrar el modal de inicio de sesión
-                    var loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
-                    loginModal.show();
-                    
-                    // Opcionalmente cerrar el modal actual
-                    var rememberPasswordModal = bootstrap.Modal.getInstance(document.getElementById('RememberPassword'));
-                    rememberPasswordModal.hide();
-                }
-            });
-        } else {
-            messageDiv.innerHTML = `<div class="alert alert-danger">${data.error || 'Error al cambiar la contraseña.'}</div>`;
-        }
-    })
-    .catch(error => {
-        messageDiv.innerHTML = '<div class="alert alert-danger">Ocurrió un error. Por favor, intente de nuevo.</div>';
-        console.error('Error:', error);
-    });
-}
-
-function nextSlideRemember() {
-    const carousel = new bootstrap.Carousel(document.getElementById('rememberPasswordCarousel'));
-    carousel.next();
-}
-
-// Event listeners
-document.getElementById('rememberPassword').addEventListener('click', forgotPassword);
 
 
 

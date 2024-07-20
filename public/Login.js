@@ -19,7 +19,7 @@ const getUserRole = async (email) => {
 
         const users = await response.json();
         const user = users.find(u => u.mail === email);
-        
+
         if (!user) {
             throw new Error('Usuario no encontrado');
         }
@@ -40,48 +40,212 @@ document.getElementById('VerificacionDeLogin').addEventListener('click', functio
     fetch('https://api-parroquia.onrender.com/auth/login', {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json',
+            'Content-Type': 'application/json'
         },
         body: JSON.stringify({ mail: email, password: password }),
     })
-    .then(response => {
-        if (!response.ok) {
-            return response.json().then(err => Promise.reject(err));
-        }
-        return response.json();
-    })
-    .then(data => {
-        console.log('Respuesta completa:', data);
-        if (data.tokenSession) {
-            console.log('Login exitoso:', data);
-            localStorage.setItem('tokenSession', data.tokenSession);
-            return getUserRole(email);
-        } else {
-            throw new Error('Token de sesión no recibido');
-        }
-    })
-    .then(role => {
-        console.log('Rol de usuario:', role);
-        
-        switch (role) {
-            case "Usuario":
-                console.log('Intentando redirigir a /User');
-                window.location.href = '/User';
-                break;
-            case "Admin":
-                console.log('Intentando redirigir a /Admin');
-                window.location.href = '/Admin';
-                break;
-            case "SuperAdmin":
-                console.log('Intentando redirigir a /SuperAdmin');
-                window.location.href = '/SuperAdmin';
-                break;
-            default:
-                console.error('Rol no reconocido:', role);
-        }
-    })
-    .catch(error => {
-        console.error('Error en la autenticación:', error);
-        alert('Error en la autenticación: ' + (error.error || error.message));
-    });
+        .then(response => {
+            if (!response.ok) {
+                return response.json().then(err => Promise.reject(err));
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Respuesta completa:', data);
+            if (data.tokenSession) {
+                console.log('Login exitoso:', data);
+                localStorage.setItem('tokenSession', data.tokenSession);
+                return { role: data.data.role, data: data };
+            } else {
+                throw new Error('Token de sesión no recibido');
+            }
+        })
+        .then(({ role, data }) => {
+            console.log('Rol de usuario:', role);
+
+            switch (role) {
+                case "Usuario":
+                    console.log('Intentando redirigir a /User');
+                    window.location.href = '/User';
+                    break;
+                case "Admin":
+                    console.log('Intentando redirigir a /Admin');
+                    window.location.href = '/Admin';
+                    break;
+                case "SuperAdmin":
+                    console.log('Intentando redirigir a /SuperAdmin');
+                    window.location.href = '/SuperAdmin';
+                    break;
+                default:
+                    console.error('Rol no reconocido:', role);
+            }
+        })
+        .catch(error => {
+            console.error('Error en la autenticación:', error);
+            alert('Error en la autenticación: ' + (error.error || error.message));
+        });
 });
+
+
+
+
+//recordar contraseña verificar codigo
+function forgotPassword() {
+    const emailInput = document.getElementById('CorreoelectronicRemember');
+    const email = emailInput.value.trim();
+    const messageDiv = document.getElementById('emailverificationRememberpassword');
+
+    // Limpiar mensajes anteriores
+    messageDiv.innerHTML = '';
+
+    // Validación de campo vacío
+    if (!email) {
+        messageDiv.innerHTML = '<div class="alert alert-danger">Por favor, ingrese su correo electrónico.</div>';
+        return;
+    }
+
+    // Validación básica de formato de correo
+    if (!email.includes('@')) {
+        messageDiv.innerHTML = '<div class="alert alert-danger">Por favor, ingrese un correo electrónico válido.</div>';
+        return;
+    }
+
+    fetch('https://api-parroquia.onrender.com/auth/forgot-password', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ mail: email }),
+    })
+        .then(response => {
+            if (response.ok) {
+                nextSlideRemember();
+            } else if (response.status === 404) {
+                messageDiv.innerHTML = '<div class="alert alert-danger">El correo electrónico no está registrado.</div>';
+            } else {
+                throw new Error(response.statusText);
+            }
+        })
+        .catch(error => {
+            messageDiv.innerHTML = '<div class="alert alert-danger">Error al enviar el código. Por favor, intente de nuevo.</div>';
+            console.error('Error:', error);
+        });
+}
+
+function verifyCodeRememberpassword() {
+    const email = document.getElementById('CorreoelectronicRemember').value;
+    const resetCode = document.getElementById('verificationCodeRememberpassword').value;
+    const messageDiv = document.getElementById('codeVerificationMessage');
+
+    if (!resetCode) {
+        messageDiv.innerHTML = '<div class="alert alert-danger">Por favor, ingrese el código de verificación.</div>';
+        return;
+    }
+
+    fetch('https://api-parroquia.onrender.com/auth/verify-ResetCode', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ mail: email, resetCode: resetCode }),
+    })
+        .then(response => {
+            if (!response.ok) {
+                return response.json().then(err => { throw err; });
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (data.message === 'Código válido') {
+                messageDiv.innerHTML = '<div class="alert alert-success">Código verificado correctamente.</div>';
+                // Guardamos el email para usarlo en el reseteo de contraseña
+                localStorage.setItem('resetEmail', email);
+                nextSlideRemember(); // Avanzar al slide de cambio de contraseña
+            } else {
+                messageDiv.innerHTML = '<div class="alert alert-danger">Código inválido o expirado.</div>';
+            }
+        })
+        .catch(error => {
+            messageDiv.innerHTML = `<div class="alert alert-danger">${error.message || 'Ocurrió un error. Por favor, intente de nuevo.'}</div>`;
+            console.error('Error:', error);
+        });
+}
+
+function resetPassword() {
+    const newPassword = document.getElementById('newPassword').value;
+    const confirmPassword = document.getElementById('confirmPassword').value;
+    const messageDiv = document.getElementById('passwordResetMessage');
+    const email = localStorage.getItem('resetEmail');
+
+    console.log('Iniciando resetPassword');
+
+    // Limpiar el mensaje de error anterior
+    messageDiv.innerHTML = '';
+
+    if (newPassword !== confirmPassword) {
+        messageDiv.innerHTML = '<div class="alert alert-danger">Las contraseñas no coinciden.</div>';
+        return;
+    }
+
+    console.log('Enviando solicitud al servidor');
+
+    fetch('https://api-parroquia.onrender.com/auth/change-Password', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ mail: email, newPassword: newPassword }),
+    })
+        .then(response => {
+            console.log('Respuesta del servidor recibida:', response.status);
+            return response.json();
+        })
+        .then(data => {
+            console.log('Datos recibidos:', data);
+            if (data.message.includes('exitosamente') || data.message.includes('successfully')) {
+                $('#RememberPassword').modal('hide');
+                console.log('Contraseña cambiada exitosamente');
+                Swal.fire({
+                    title: 'Contraseña restablecida',
+                    text: 'Su contraseña ha sido restablecida con éxito. Por favor, inicie sesión con su nueva contraseña.',
+                    icon: 'success',
+                    confirmButtonText: 'Iniciar sesión',
+                    backdrop:false,
+                    customClass: {
+                        confirmButton: 'btn btn-primary'
+                    }
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // Redirigir a la ruta deseada
+                        $('#loginModal').modal('show');
+                    }
+                });
+            } else {
+                console.log('Error en el cambio de contraseña:', data.message);
+                messageDiv.innerHTML = `<div class="alert alert-danger">${data.message || 'Error al cambiar la contraseña.'}</div>`;
+                Swal.fire({
+                    title: 'Error al cambiar la contraseña',
+                    text: data.message || 'Error al cambiar la contraseña.',
+                    icon: 'error',
+                    confirmButtonText: 'Reintentar',
+
+                });
+            }
+        })
+        .catch(error => {
+            console.error('Error en la solicitud:', error);
+            messageDiv.innerHTML = '<div class="alert alert-danger">Ocurrió un error. Por favor, intente de nuevo.</div>';
+            alert('Ocurrió un error. Por favor, intente de nuevo.');
+        });
+}
+
+
+
+
+function nextSlideRemember() {
+    const carousel = new bootstrap.Carousel(document.getElementById('rememberPasswordCarousel'));
+    carousel.next();
+}
+
+// Event listeners
+document.getElementById('rememberPassword').addEventListener('click', forgotPassword);
