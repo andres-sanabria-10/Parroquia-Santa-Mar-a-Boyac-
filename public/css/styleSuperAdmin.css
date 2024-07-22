@@ -10,9 +10,10 @@ body{
     background-color: #E9D7F0;
 }
 
-.main-content {
-    height: 100%;
+.custom-main {
     background-color: aqua;
+    height: 100vh; /* Ejemplo de altura */
+    /* Puedes agregar más estilos personalizados aquí */
 }
 
 .sidebar .nav-link.active {
