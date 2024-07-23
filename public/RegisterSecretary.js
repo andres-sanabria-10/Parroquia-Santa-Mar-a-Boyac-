@@ -3,10 +3,29 @@ document.addEventListener('DOMContentLoaded', function () {
     const adminLink = document.getElementById('AdminLink');
     const mainContent = document.getElementById('Principal');
     const adminLinkMobile = document.getElementById('MobileAdminLink');
+    const inicioLink = document.getElementById('inicioLink');
+    const MobieinicioLink = document.getElementById('MobileinicioLink');
+   
 
 
+    
 
-function handleAdminClick(e) {
+    const contenidoInicial = mainContent.innerHTML;
+
+    inicioLink.addEventListener('click', function (e) {
+        e.preventDefault();
+        mainContent.innerHTML = contenidoInicial;
+    });
+
+    MobieinicioLink.addEventListener('click', function (e) {
+        e.preventDefault();
+        mainContent.innerHTML = contenidoInicial;
+    });
+
+   
+    
+
+    function handleAdminClick(e) {
         e.preventDefault();
         const registrationFormHTML = `
          <div class="container px-5 my-5">
@@ -38,6 +57,8 @@ function handleAdminClick(e) {
 
                                                     <button type="button" class="btn btn-primary" " 
                                                     id="CheckEmail">Siguiente</button>
+
+                                                   <button type="button" class="btn btn-primary" id="ViewTable" data-bs-toggle="modal" data-bs-target="#usersModal">Usuarios</button>
                                                 </div>
 
                                                 <!-- Step 2: Verification Code -->
@@ -97,6 +118,8 @@ function handleAdminClick(e) {
                                                     <button type="submit" class="btn btn-primary" id="saveUserAdmin"
                                                         onclick="registerUserAdmin(event)">Guardar</button>
 
+                                                        
+
                                                     <div id="Message" class="mt-2"></div>
                                                 </div>
                                             </div>
@@ -108,11 +131,43 @@ function handleAdminClick(e) {
                     </div>
                 </div>
 
+                <div class="modal fade" id="usersModal" tabindex="-1" aria-labelledby="usersModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="usersModalLabel">Lista de Usuarios</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <table class="table">
+                            <thead>
+                                <tr>
+                                <th>Nombre</th>
+                                <th>Apellido</th>
+                                <th>Correo</th>
+                                <th>Tipo de Documento</th>
+                                <th>Número de Documento</th>
+                                </tr>
+                            </thead>
+                            <tbody id="usersTableBody">
+                                <!-- Los datos de los usuarios se insertarán aquí -->
+                            </tbody>
+                            </table>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+
          `;
 
         // Reemplaza el contenido del main
         mainContent.innerHTML = registrationFormHTML;
         initializeFormFunctionality();
+
+
     }
 
     if (adminLink) {
@@ -122,7 +177,82 @@ function handleAdminClick(e) {
     if (adminLinkMobile) {
         adminLinkMobile.addEventListener('click', handleAdminClick);
     }
+
 });
+
+function ViewTable() {
+    // Mostrar el modal
+    const modal = new bootstrap.Modal(document.getElementById('usersModal'));
+    modal.show();
+    const token = localStorage.getItem('tokenSession'); 
+    if (!token) {
+        console.error('No se encontró el token de autenticación');
+        // Aquí puedes manejar el caso de no tener token, por ejemplo, redirigiendo al login
+        return;
+    }
+    // Obtener los usuarios
+    fetch('https://api-parroquia.onrender.com/user/', {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        }
+    })
+    .then(response => {
+        console.log("Response status:", response.status); // Verificar el código de estado de la respuesta
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+
+        }
+        return response.json();
+    })
+    .then(users => {
+        console.log("Usuarios recibidos:", users); // Verificar los datos recibidos
+        
+        const tableBody = document.getElementById('usersTableBody');
+        if (!tableBody) {
+            console.error("No se encontró el elemento con id 'usersTableBody'");
+            return;
+        }
+        
+        tableBody.innerHTML = ''; // Limpiar la tabla
+
+        if (users.length === 0) {
+            console.log("No se encontraron usuarios");
+            tableBody.innerHTML = '<tr><td colspan="5">No se encontraron usuarios.</td></tr>';
+            return;
+        }
+
+        users.forEach(user => {
+            console.log("Procesando usuario:", user); // Verificar cada usuario
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${user.name || ''}</td>
+                <td>${user.lastName || ''}</td>
+                <td>${user.mail || ''}</td>
+                <td>${user.typeDocument ? user.typeDocument.name : ''}</td>
+                <td>${user.NumberDocument || ''}</td>
+            `;
+            tableBody.appendChild(row);
+        });
+    })
+    .catch(error => {
+        console.error('Error al obtener usuarios:', error);
+        const tableBody = document.getElementById('usersTableBody');
+        if (tableBody) {
+            tableBody.innerHTML = `
+                <tr>
+                    <td colspan="5" class="text-center">Error al cargar los usuarios: ${error.message}</td>
+                </tr>
+            `;
+        }
+    });
+}
+
+// Asegúrate de que este código esté dentro de la función initializeFormFunctionality
+
+
+
 function nextStep(step) {
     var carousel = new bootstrap.Carousel(document.getElementById('carouselRegister'));
     carousel.next();
@@ -135,6 +265,13 @@ function prevStep(step) {
 
 
 function initializeFormFunctionality() {
+    const viewTableButton = document.getElementById('ViewTable');
+    if (viewTableButton) {
+        viewTableButton.addEventListener('click', ViewTable);
+    } else {
+        console.error("No se encontró el botón con id 'ViewTable'");
+    }
+
     const checkEmailButton = document.getElementById('CheckEmail');
     if (checkEmailButton) {
         checkEmailButton.addEventListener('click', async function (event) {
@@ -166,6 +303,8 @@ function initializeFormFunctionality() {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+
                     },
                     body: JSON.stringify({ mail: email }),
                 });
@@ -199,7 +338,7 @@ function initializeFormFunctionality() {
     } else {
         console.error('El botón CheckEmail no se encontró');
     }
-    
+
     // Inicializar el carousel
     var carouselElement = document.getElementById('carouselRegister');
     if (carouselElement) {
@@ -208,106 +347,112 @@ function initializeFormFunctionality() {
         });
     }
 }
-    function verifyCode() {
-        const email = document.getElementById('CorreoelectronicSecretary').value; // Asumiendo que guardamos el email del paso anterior
-        const verificationCode = document.getElementById('VerificationCode').value;
-        const messageDiv = document.getElementById('codeVerificationMessage2');
+function verifyCode() {
+    const email = document.getElementById('CorreoelectronicSecretary').value; // Asumiendo que guardamos el email del paso anterior
+    const verificationCode = document.getElementById('VerificationCode').value;
+    const messageDiv = document.getElementById('codeVerificationMessage2');
 
-        if (!verificationCode) {
-            messageDiv.innerHTML = '<div class="alert alert-danger">Por favor, ingrese el código de verificación.</div>';
-            return;
-        }
+    if (!verificationCode) {
+        messageDiv.innerHTML = '<div class="alert alert-danger">Por favor, ingrese el código de verificación.</div>';
+        return;
+    }
 
-        fetch('https://api-parroquia.onrender.com/auth/verify-Code', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ mail: email, verificationCode: verificationCode }),
+    fetch('https://api-parroquia.onrender.com/auth/verify-Code', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`
+
+        },
+        body: JSON.stringify({ mail: email, verificationCode: verificationCode }),
+    })
+        .then(response => response.json())
+        .then(data => {
+            if (data.message) {
+                messageDiv.innerHTML = `<div class="alert alert-success">${data.message}</div>`;
+                nextStep(2); // Avanza al siguiente paso si la verificación es exitosa
+            } else {
+                messageDiv.innerHTML = `<div class="alert alert-danger">${data.error}</div>`;
+            }
         })
-            .then(response => response.json())
-            .then(data => {
-                if (data.message) {
-                    messageDiv.innerHTML = `<div class="alert alert-success">${data.message}</div>`;
-                    nextStep(2); // Avanza al siguiente paso si la verificación es exitosa
-                } else {
-                    messageDiv.innerHTML = `<div class="alert alert-danger">${data.error}</div>`;
-                }
-            })
-            .catch(error => {
-                messageDiv.innerHTML = '<div class="alert alert-danger">Ocurrió un error. Por favor, intente de nuevo.</div>';
-                console.error('Error:', error);
-            });
+        .catch(error => {
+            messageDiv.innerHTML = '<div class="alert alert-danger">Ocurrió un error. Por favor, intente de nuevo.</div>';
+            console.error('Error:', error);
+        });
+}
+
+
+function registerUserAdmin(event) {
+    event.preventDefault(); // Esto evita que el formulario se envíe automáticamente
+
+    const name = document.getElementById('NameSecretary').value;
+    const lastName = document.getElementById('LastNameSecretary').value;
+    const birthdate = document.getElementById('birthdateSecretary').value;
+    const documentNumber = document.getElementById('NumberDocumentSecretary').value;
+    const email = document.getElementById('CorreoelectronicSecretary').value; // Asumiendo que guardamos el email del primer paso
+    const password = document.getElementById('PasswordSecretary').value;
+    const messageDiv = document.getElementById('Message');
+
+    // Validación básica
+    if (!name || !lastName || !birthdate || !documentNumber || !email || !password) {
+        messageDiv.innerHTML = '<div class="alert alert-danger">Por favor, complete todos los campos.</div>';
+        return;
     }
 
 
-    function registerUserAdmin(event) {
-        event.preventDefault(); // Esto evita que el formulario se envíe automáticamente
-
-        const name = document.getElementById('NameSecretary').value;
-        const lastName = document.getElementById('LastNameSecretary').value;
-        const birthdate = document.getElementById('birthdateSecretary').value;
-        const documentNumber = document.getElementById('NumberDocumentSecretary').value;
-        const email = document.getElementById('CorreoelectronicSecretary').value; // Asumiendo que guardamos el email del primer paso
-        const password = document.getElementById('PasswordSecretary').value;
-        const messageDiv = document.getElementById('Message');
-
-        // Validación básica
-        if (!name || !lastName || !birthdate || !documentNumber || !email || !password) {
-            messageDiv.innerHTML = '<div class="alert alert-danger">Por favor, complete todos los campos.</div>';
-            return;
-        }
 
 
 
+    const userData = {
+        name,
+        lastName,
+        birthdate,
+        documentNumber,
+        typeDocument: "66904ea3ca8a0fc2e67df521",
+        mail: email,
+        password,
+        role: "Admin"
+    };
 
+    fetch('https://api-parroquia.onrender.com/auth/register', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
 
-        const userData = {
-            name,
-            lastName,
-            birthdate,
-            documentNumber,
-            typeDocument: "66904ea3ca8a0fc2e67df521",
-            mail: email,
-            password,
-            role: "Admin"
-        };
-
-        fetch('https://api-parroquia.onrender.com/auth/register', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(userData),
+        },
+        body: JSON.stringify(userData),
+    })
+        .then(response => {
+            if (!response.ok) {
+                return response.json().then(errorData => {
+                    throw new Error(errorData.error);
+                });
+            }
+            return response.json();
         })
-            .then(response => {
-                if (!response.ok) {
-                    return response.json().then(errorData => {
-                        throw new Error(errorData.error);
-                    });
-                }
-                return response.json();
-            })
-            .then(data => {
-                if (data.data) {
-                    messageDiv.innerHTML = '<div class="alert alert-success">Usuario registrado exitosamente.</div>';
-                    window.location.href = '/SuperAdmin'; // Redireccionar a la vista 'index.html';
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
+        .then(data => {
+            if (data.data) {
+                messageDiv.innerHTML = '<div class="alert alert-success">Usuario registrado exitosamente.</div>';
+                window.location.href = '/SuperAdmin'; // Redireccionar a la vista 'index.html';
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
 
-                // Manejar errores específicos
-                if (error.message.includes('fecha de nacimiento')) {
-                    messageDiv.innerHTML = `<div class="alert alert-danger">${error.message}</div>`;
-                } else if (error.message.includes('contraseña debe tener al menos 8 caracteres')) {
-                    messageDiv.innerHTML = `<div class="alert alert-danger">${error.message}</div>`;
-                } else if (error.message.includes('El numero de Documento ya existe')) {
-                    messageDiv.innerHTML = `<div class="alert alert-danger">El numero de Documento ya existe</div>`;
-                } else if (error.message.includes('E11000 duplicate key error') && error.message.includes('documentNumber')) {
-                    messageDiv.innerHTML = `<div class="alert alert-danger">El número de documento ya está registrado. Por favor, utilice otro.</div>`;
-                } else {
-                    messageDiv.innerHTML = `<div class="alert alert-danger">Ocurrió un error durante el registro. Por favor, intente de nuevo.</div>`;
-                }
-            });
-    }
+            // Manejar errores específicos
+            if (error.message.includes('fecha de nacimiento')) {
+                messageDiv.innerHTML = `<div class="alert alert-danger">${error.message}</div>`;
+            } else if (error.message.includes('contraseña debe tener al menos 8 caracteres')) {
+                messageDiv.innerHTML = `<div class="alert alert-danger">${error.message}</div>`;
+            } else if (error.message.includes('El numero de Documento ya existe')) {
+                messageDiv.innerHTML = `<div class="alert alert-danger">El numero de Documento ya existe</div>`;
+            } else if (error.message.includes('E11000 duplicate key error') && error.message.includes('documentNumber')) {
+                messageDiv.innerHTML = `<div class="alert alert-danger">El número de documento ya está registrado. Por favor, utilice otro.</div>`;
+            } else {
+                messageDiv.innerHTML = `<div class="alert alert-danger">Ocurrió un error durante el registro. Por favor, intente de nuevo.</div>`;
+            }
+        });
+}
+
+
+

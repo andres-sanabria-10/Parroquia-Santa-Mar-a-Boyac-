@@ -54,7 +54,8 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-dark btn btn-light d-flex align-items-center">
+                            <a id="GestionPartidasAdmin" href="#"
+                                class="nav-dark btn btn-light d-flex align-items-center">
                                 <i class="bi bi-book me-2"></i> Gestión de partidas
                             </a>
                         </li>
@@ -110,13 +111,14 @@
                             </li>
 
                             <li class="nav-item">
-                                <a href="#" id="MobileAdminLink" class="nav-dark btn btn-light d-flex align-items-center"
-                                    aria-current="page">
+                                <a href="#" id="MobileAdminLink"
+                                    class="nav-dark btn btn-light d-flex align-items-center" aria-current="page">
                                     <i class="bi bi-pencil-square me-2"></i> Registro Administrador
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-dark btn btn-light d-flex align-items-center">
+                                <a href="#" id="MobileGestionPartidas"
+                                    class="nav-dark btn btn-light d-flex align-items-center" aria-current="page">
                                     <i class="bi bi-book me-2"></i> Gestión de partidas
                                 </a>
                             </li>
@@ -142,13 +144,86 @@
                 </div>
             </nav>
 
+
+
+
+
             <!-- Contenido principal -->
             <main id="Principal"
                 class="col-md-9 col-lg-10 col-sm-12 d-flex justify-content-center aling-items-center custom-main">
 
-                <div class="container px-5 my-5 text-center">
-                    <img src="/img/parroquiaSantaMaria.png" class="img-fluid" alt="">
+                <div class="d-flex flex-column w-100">
+                    <div class="container mt-3 text-center" style="background-color: #f8f9fa;">
+                        <button type="button" class="btn btn-outline-primary mx-2 mt-2">Bautismos</button>
+                        <button type="button" class="btn btn-outline-secondary mx-2 mt-2">Confirmaciones</button>
+                        <button type="button" class="btn btn-outline-success mx-2 mt-2">Matrimonio</button>
+                        <button type="button" class="btn btn-outline-danger mx-2 mt-2">Fallecimiento</button>
+                    </div>
+
+                    <div class="container mt-3 pb-4 text-center" style="background-color: #f8f9fa;">
+                        <div class="card mt-3">
+                            <div class="card-body">
+                                <h5 class="card-title">Baustimos</h5>
+                              This is some text within a card body.
+                              <nav class="navbar navbar-light bg-light d-md-none">
+                                <div class="container-fluid">
+                                    <a href="/" class="link-dark text-decoration-none">
+                                        <img src="/img/sacerdoteSidebar.png" alt="" width="32" height="32" class="rounded-circle me-2">
+                                        <span>Sacerdote</span>
+                                    </a>
+                                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+                                        aria-label="Toggle navigation">
+                                        <span class="navbar-toggler-icon"></span>
+                                    </button>
+                                    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                                        <ul class="navbar-nav">
+                
+                                            <li class="nav-item">
+                                                <a id="MobileinicioLink" class="nav-dark btn btn-light d-flex align-items-center"
+                                                    aria-current="page">
+                                                    <i class="bi bi-house me-2"></i> Inicio
+                                                </a>
+                                            </li>
+                
+                                            <li class="nav-item">
+                                                <a href="#" id="MobileAdminLink"
+                                                    class="nav-dark btn btn-light d-flex align-items-center" aria-current="page">
+                                                    <i class="bi bi-pencil-square me-2"></i> Registro Administrador
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a href="#" id="MobileGestionPartidas"
+                                                    class="nav-dark btn btn-light d-flex align-items-center" aria-current="page">
+                                                    <i class="bi bi-book me-2"></i> Gestión de partidas
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a href="#" class="nav-dark btn btn-light d-flex align-items-center">
+                                                    <i class="bi bi-calendar me-2"></i> Gestion de Misas
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a href="#" class="nav-dark btn btn-light d-flex align-items-center">
+                                                    <i class="bi bi-calculator me-2"></i> Contabilidad
+                                                </a>
+                                            </li>
+                
+                                            <li class="nav-item">
+                                                <a class="nav-dark btn btn-light d-flex align-items-center" href="#">Perfil</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-dark btn btn-light d-flex align-items-center" href="#">Cerrar Sesión</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </nav>
+                            </div>
+                          </div>
+                    </div>
                 </div>
+
             </main>
         </div>
     </div>
@@ -162,7 +237,21 @@
         integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
         crossorigin="anonymous"></script>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const token = localStorage.getItem('tokenSession');
+            if (!token) {
+                console.log('No token found. Redirecting to login page...');
+                window.location.href = '/login'; // Adjust this to your login page URL
+            } else {
+                console.log('Token found:', token);
+                // Here you can add any additional checks or actions you want to perform
+                // For example, you could verify the token with your backend
+            }
+        });
+    </script>
 
+    <script src="GestionPartidasSuperAdmin.js"></script>
 
 
 
