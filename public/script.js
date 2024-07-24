@@ -59,7 +59,7 @@ document.getElementById('verifyEmailBtn').addEventListener('click', async functi
             nextSlide(); // Avanza al siguiente paso
         } else {
             // Manejo de errores específicos del servidor
-            switch(data.error) {
+            switch (data.error) {
                 case 'EMAIL_EXISTS':
                     messageDiv.innerHTML = '<div class="alert alert-danger">Este correo electrónico ya está registrado.</div>';
                     break;
@@ -184,8 +184,23 @@ function registerUser() {
             }
         })
         .catch(error => {
-            messageDiv.innerHTML = `<div class="alert alert-danger">El numero de Documento ya existe</div>`;
+
+            let errorMessage = error.message;
+
+            if (errorMessage === 'El correo electrónico ya está registrado') {
+                errorMessage = 'El correo electrónico ya está registrado. Por favor, use otro correo.';
+            } else if (errorMessage === 'El número de documento ya está registrado') {
+                errorMessage = 'El número de documento ya está registrado. Por favor, use otro número.';
+            } else if (errorMessage === 'La fecha de nacimiento no puede ser mayor a la fecha actual') {
+                errorMessage = 'La fecha de nacimiento no puede ser mayor a la fecha actual. Por favor, revise la fecha ingresada.';
+            } else {
+                errorMessage = 'Ha ocurrido un error inesperado. Por favor, inténtelo de nuevo más tarde.';
+            }
+
+            messageDiv.innerHTML = `<div class="alert alert-danger">${errorMessage}</div>`;
             console.error('Error:', error);
+
+
         });
 }
 
