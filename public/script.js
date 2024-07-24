@@ -47,7 +47,7 @@ document.getElementById('verifyEmailBtn').addEventListener('click', async functi
         const response = await fetch('https://api-parroquia.onrender.com/auth/verify-Email', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json',
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify({ mail: email }),
         });
@@ -96,7 +96,7 @@ function verifyCode() {
     fetch('https://api-parroquia.onrender.com/auth/verify-Code', {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json',
+            'Content-Type': 'application/json'
         },
         body: JSON.stringify({ mail: email, verificationCode: verificationCode }),
     })
@@ -165,7 +165,7 @@ function registerUser() {
     fetch('https://api-parroquia.onrender.com/auth/register', {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json',
+            'Content-Type': 'application/json'
         },
         body: JSON.stringify(userData),
     })

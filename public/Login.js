@@ -8,8 +8,7 @@ const getUserRole = async (email) => {
         const response = await fetch('https://api-parroquia.onrender.com/user/', {
             method: 'GET',
             headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
+                'Content-Type': 'application/json'
             }
         });
 
@@ -126,8 +125,7 @@ function forgotPassword() {
     fetch('https://api-parroquia.onrender.com/auth/forgot-password', {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
+            'Content-Type': 'application/json'
         },
         body: JSON.stringify({ mail: email }),
     })
@@ -159,8 +157,7 @@ function verifyCodeRememberpassword() {
     fetch('https://api-parroquia.onrender.com/auth/verify-ResetCode', {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
+            'Content-Type': 'application/json'
         },
         body: JSON.stringify({ mail: email, resetCode: resetCode }),
     })
@@ -207,8 +204,7 @@ function resetPassword() {
     fetch('https://api-parroquia.onrender.com/auth/change-Password', {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
+            'Content-Type': 'application/json'
         },
         body: JSON.stringify({ mail: email, newPassword: newPassword }),
     })
