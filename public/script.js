@@ -185,15 +185,8 @@ function registerUser() {
         })
         .catch(error => {
 
-
-
-            messageDiv.innerHTML = `<div class="alert alert-danger">La fecha de nacimiento no puede ser mayor a la fecha actual</div>`;
-            console.error('Error:', error);
-
             messageDiv.innerHTML = `<div class="alert alert-danger">El numero de Documento ya existe</div>`;
             console.error('Error:', error);
-
-
 
 
         });
