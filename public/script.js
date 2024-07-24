@@ -184,24 +184,30 @@ function registerUser() {
             }
         })
         .catch(error => {
-
-            let errorMessage = error.message;
-
-            if (errorMessage === 'El correo electrónico ya está registrado') {
-                errorMessage = 'El correo electrónico ya está registrado. Por favor, use otro correo.';
-            } else if (errorMessage === 'El número de documento ya está registrado') {
-                errorMessage = 'El número de documento ya está registrado. Por favor, use otro número.';
-            } else if (errorMessage === 'La fecha de nacimiento no puede ser mayor a la fecha actual') {
-                errorMessage = 'La fecha de nacimiento no puede ser mayor a la fecha actual. Por favor, revise la fecha ingresada.';
-            } else {
-                errorMessage = 'Ha ocurrido un error inesperado. Por favor, inténtelo de nuevo más tarde.';
-            }
-
-            messageDiv.innerHTML = `<div class="alert alert-danger">${errorMessage}</div>`;
+            handleRegisterError(error.message, messageDiv);
             console.error('Error:', error);
-
-
         });
+}
+
+function handleRegisterError(errorMessage, messageDiv) {
+    let userFriendlyMessage;
+
+    switch (errorMessage) {
+        case 'El correo electrónico ya está registrado':
+            userFriendlyMessage = 'El correo electrónico ya está registrado. Por favor, use otro correo.';
+            break;
+        case 'El número de documento ya está registrado':
+            userFriendlyMessage = 'El número de documento ya está registrado. Por favor, use otro número.';
+            break;
+        case 'La fecha de nacimiento no puede ser mayor a la fecha actual':
+            userFriendlyMessage = 'La fecha de nacimiento no puede ser mayor a la fecha actual. Por favor, revise la fecha ingresada.';
+            break;
+        default:
+            userFriendlyMessage = 'Ha ocurrido un error inesperado. Por favor, inténtelo de nuevo más tarde.';
+            break;
+    }
+
+    messageDiv.innerHTML = `<div class="alert alert-danger">${userFriendlyMessage}</div>`;
 }
 
 // Asegúrate de que el botón "Crear cuenta" en el tercer paso llame a esta función
