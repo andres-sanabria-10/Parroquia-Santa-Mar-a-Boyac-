@@ -185,8 +185,26 @@ function registerUser() {
         })
         .catch(error => {
 
-            messageDiv.innerHTML = `<div class="alert alert-danger">El numero de Documento ya existe</div>`;
+
+            let userFriendlyMessage;
+
+            // Comprobar los mensajes de error específicos
+            if (error.message.includes('El correo electrónico ya está registrado')) {
+                userFriendlyMessage = 'El correo electrónico ya está registrado. Por favor, use otro correo.';
+            } else if (error.message.includes('El número de documento ya está registrado')) {
+                userFriendlyMessage = 'El número de documento ya está registrado. Por favor, use otro número.';
+            } else if (error.message.includes('La fecha de nacimiento no puede ser mayor a la fecha actual')) {
+                userFriendlyMessage = 'La fecha de nacimiento no puede ser mayor a la fecha actual. Por favor, revise la fecha ingresada.';
+            } else {
+                userFriendlyMessage = 'Ha ocurrido un error inesperado. Por favor, inténtelo de nuevo más tarde.';
+            }
+
+            messageDiv.innerHTML = `<div class="alert alert-danger">${userFriendlyMessage}</div>`;
             console.error('Error:', error);
+
+
+            //  messageDiv.innerHTML = `<div class="alert alert-danger">El numero de Documento ya existe</div>`;
+            //  console.error('Error:', error);
 
 
         });
