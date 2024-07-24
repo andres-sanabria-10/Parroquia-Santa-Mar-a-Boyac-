@@ -186,8 +186,6 @@ function registerUser() {
         .catch(error => {
 
 
-
-            messageDiv.innerHTML = `<div class="alert alert-danger">El numero de Documento ya existe</div>`;
             console.error('Error:', error);
 
 
