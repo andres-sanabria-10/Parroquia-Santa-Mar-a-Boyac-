@@ -202,9 +202,7 @@ function handleRegisterError(errorMessage, messageDiv) {
         case 'La fecha de nacimiento no puede ser mayor a la fecha actual':
             userFriendlyMessage = 'La fecha de nacimiento no puede ser mayor a la fecha actual. Por favor, revise la fecha ingresada.';
             break;
-        default:
-            userFriendlyMessage = 'Ha ocurrido un error inesperado. Por favor, inténtelo de nuevo más tarde.';
-            break;
+
     }
 
     messageDiv.innerHTML = `<div class="alert alert-danger">${userFriendlyMessage}</div>`;
