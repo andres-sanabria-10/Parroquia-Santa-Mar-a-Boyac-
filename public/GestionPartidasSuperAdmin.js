@@ -875,4 +875,4 @@ document.addEventListener('DOMContentLoaded', function () {
         MobileGestionPartidas.addEventListener('click', handleAdminClickGesionPartidas);
     }
 
-}); 
+});
