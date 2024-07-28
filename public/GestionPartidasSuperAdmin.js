@@ -196,35 +196,32 @@ document.addEventListener('DOMContentLoaded', function () {
 
                                                     <form class="row g-3 needs-validation" novalidate id="formulariobuscar">
                                                         <div class="col-md-4">
-                                                            <label for="validationCustom01" class="form-label">Numero de Documento</label>
+                                                            <label for="NumDocBuscar" class="form-label">Número de Documento</label>
                                                             <input type="text" class="form-control" id="NumDocBuscar" required>
                                                             <div class="valid-feedback">
-                                                            Looks good!
+                                                                Looks good!
                                                             </div>
                                                         </div>
-                                                         <div class="col-12">
+                                                        <div class="col-12">
                                                             <button class="btn btn-primary" type="submit">Buscar</button>
                                                         </div>
-                                                        </form>
+                                                    </form>
 
-                                                            <table class="table">
-                                                                <thead>
-                                                                    <tr>
-                                                                    <th scope="col">#</th>
-                                                                    <th scope="col">First</th>
-                                                                    <th scope="col">Last</th>
-                                                                    <th scope="col">Handle</th>
-                                                                    </tr>
-                                                                </thead>
-                                                                <tbody>
-                                                                    <tr>
-                                                                    <th scope="row">1</th>
-                                                                    <td>Mark</td>
-                                                                    <td>Otto</td>
-                                                                    <td>@mdo</td>
-                                                                    </tr>
-                                                                </tbody>
-                                                            </table>
+                                                    <table class="table" id="tablaBautismo">
+                                                        <thead>
+                                                            <tr>
+                                                                <th scope="col">Nombre</th>
+                                                                <th scope="col">Apellido</th>
+                                                                <th scope="col">Número de Documento</th>
+                                                                <th scope="col">Correo</th>
+                                                                <th scope="col">Fecha de Bautismo</th>
+                                                                <th scope="col">Padrino</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <!-- Los datos se insertarán aquí -->
+                                                        </tbody>
+                                                    </table>
 
 
 
@@ -406,7 +403,38 @@ document.addEventListener('DOMContentLoaded', function () {
                                             <div id="ConfirmacionCardShow" class="accordion-collapse collapse" data-bs-parent="#ConfirmacionesCardContainer">
                                                 <div class="accordion-body">
                                                     <h5 class="card-title">Mostrar Confirmacion</h5>
-                                                    Gestión de las partidas de Confirmacion
+                                                    Se buscará la partida con el número de documento
+
+                                                   <form class="row g-3 needs-validation" novalidate id="formulariobuscarConfirmacion">
+                                                        <div class="col-md-4">
+                                                            <label for="NumDocBuscarConfirmacion" class="form-label">Número de Documento</label>
+                                                            <input type="text" class="form-control" id="NumDocBuscarConfirmacion" required>
+                                                            <div class="valid-feedback">
+                                                                ¡Se ve bien!
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <button class="btn btn-primary" type="submit">Buscar</button>
+                                                        </div>
+                                                    </form>
+
+                                                    <table class="table" id="tablaConfirmacion">
+                                                        <thead>
+                                                            <tr>
+                                                                <th scope="col">Nombre</th>
+                                                                <th scope="col">Apellido</th>
+                                                                <th scope="col">Número de Documento</th>
+                                                                <th scope="col">Correo</th>
+                                                                <th scope="col">Fecha de Confirmación</th>
+                                                                <th scope="col">Padrino</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <!-- Los datos se insertarán aquí -->
+                                                        </tbody>
+                                                    </table>
+
+
                                                 </div>
                                             </div>
                                         </div>
@@ -602,7 +630,45 @@ document.addEventListener('DOMContentLoaded', function () {
                                             <div id="MatrimonioCardShow" class="accordion-collapse collapse" data-bs-parent="#MatrimonioCardContainer1">
                                                 <div class="accordion-body">
                                                     <h5 class="card-title">Mostrar Matrimonio</h5>
-                                                    Gestión de las partidas de Matrimonio gg
+                                                    Se buscará la partida con el número de documento
+
+                                                   <form class="row g-3 needs-validation" novalidate id="formulariobuscarMatrimonio">
+                                                        <div class="col-md-4">
+                                                            <label for="NumDocBuscarMatrimonio" class="form-label">Número de Documento</label>
+                                                            <input type="text" class="form-control" id="NumDocBuscarMatrimonio" required>
+                                                            <div class="valid-feedback">
+                                                                ¡Se ve bien!
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <button class="btn btn-primary" type="submit">Buscar</button>
+                                                        </div>
+                                                    </form>
+
+                                                    <div id="MatrimonioCardContainer2" style="max-height: 400px; overflow-x: auto;">
+
+                                                    <table class="table" id="tablaMatrimonio">
+                                                        <thead>
+                                                            <tr>
+                                                                <th scope="col">Nombre Esposo</th>
+                                                                <th scope="col">Apellido Esposo</th>
+                                                                 <th scope="col">Nombre Esposa</th>
+                                                                <th scope="col">Apellido Esposa</th>
+                                                                <th scope="col">Número de Documento Esposo</th>
+                                                                <th scope="col">Número de Documento Esposa</th>
+                                                                <th scope="col" >Correo</th>
+                                                                <th scope="col" >Fecha de matrimonio</th>
+                                                              
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <!-- Los datos se insertarán aquí -->
+                                                        </tbody>
+                                                    </table>
+                                                    </div>
+
+
+
                                                 </div>
                                             </div>
                                         </div>
@@ -833,6 +899,22 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
 
+        const formularioBuscar = document.getElementById('formulariobuscar');
+        if (formularioBuscar) {
+            formularioBuscar.addEventListener('submit', buscarBautismo);
+        }
+
+        const form = document.getElementById('formulariobuscarConfirmacion');
+        if (form) {
+            form.addEventListener('submit', buscarConfirmacion);
+        }
+        const formMatrimonio = document.getElementById('formulariobuscarMatrimonio');
+        if (formMatrimonio) {
+            formMatrimonio.addEventListener('submit', buscarMatrimonio);
+        }
+
+
+
 
     }
 
@@ -1024,7 +1106,7 @@ function registrarDefuncion(event) {
         motherName: document.getElementById('motherNameDeath').value,
         civilStatus: document.getElementById('civilStatus').value,
         cemeteryName: document.getElementById('cemeteryName').value,
-      
+
     };
 
     fetch('https://api-parroquia.onrender.com/death/', {
@@ -1060,4 +1142,179 @@ function registrarDefuncion(event) {
                 text: error.message || 'Ocurrió un error al intentar registrar la defunción',
             });
         });
+}
+
+
+function buscarBautismo(event) {
+    event.preventDefault();
+
+    const documentNumber = document.getElementById('NumDocBuscar').value;
+
+    fetch(`https://api-parroquia.onrender.com/baptism/${documentNumber}`, {
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${localStorage.getItem('tokenSession')}`
+        }
+    })
+        .then(response => {
+            if (!response.ok) {
+                return response.json().then(err => {
+                    throw new Error(err.message || 'Bautismo no encontrado');
+                });
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Bautismo encontrado:', data);
+
+            // Limpiar la tabla
+            const tablaBautismo = document.getElementById('tablaBautismo').getElementsByTagName('tbody')[0];
+            tablaBautismo.innerHTML = '';
+
+            // Crear una nueva fila
+            const row = tablaBautismo.insertRow();
+
+            // Insertar celdas con los datos
+            row.insertCell(0).textContent = data.baptized.name;
+            row.insertCell(1).textContent = data.baptized.lastName;
+            row.insertCell(2).textContent = data.baptized.documentNumber;
+            row.insertCell(3).textContent = data.baptized.mail;
+            row.insertCell(4).textContent = new Date(data.baptismDate).toLocaleDateString();
+            row.insertCell(5).textContent = data.godfather1;
+            document.getElementById('formulariobuscar').reset();
+
+            Swal.fire({
+                icon: 'success',
+                title: 'Bautismo Encontrado',
+                text: 'Los datos del bautismo se han cargado en la tabla',
+            });
+        })
+        .catch(error => {
+            console.error('Error al buscar el bautismo:', error);
+            Swal.fire({
+                icon: 'error',
+                title: 'Error al buscar el bautismo',
+                text: error.message || 'Ocurrió un error al intentar buscar el bautismo',
+            });
+            // Limpiar la tabla en caso de error
+            document.getElementById('tablaBautismo').getElementsByTagName('tbody')[0].innerHTML = '';
+        });
+}
+
+
+
+function buscarConfirmacion(event) {
+    event.preventDefault();
+
+    const documentNumber = document.getElementById('NumDocBuscarConfirmacion').value;
+
+    fetch(`https://api-parroquia.onrender.com/confirmation/${documentNumber}`, {
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${localStorage.getItem('tokenSession')}`
+        }
+    })
+        .then(response => {
+            if (!response.ok) {
+                return response.json().then(err => {
+                    throw new Error(err.message || 'Confirmación no encontrada');
+                });
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Confirmación encontrada:', data);
+
+            // Limpiar la tabla
+            const tablaConfirmacion = document.getElementById('tablaConfirmacion').getElementsByTagName('tbody')[0];
+            tablaConfirmacion.innerHTML = '';
+
+            // Crear una nueva fila
+            const row = tablaConfirmacion.insertRow();
+
+            // Insertar celdas con los datos
+            row.insertCell(0).textContent = data.confirmed.name;
+            row.insertCell(1).textContent = data.confirmed.lastName;
+            row.insertCell(2).textContent = data.confirmed.documentNumber;
+            row.insertCell(3).textContent = data.confirmed.mail;
+            row.insertCell(4).textContent = new Date(data.confirmationDate).toLocaleDateString();
+            row.insertCell(5).textContent = data.godfather1 || 'N/A';
+
+            document.getElementById('formulariobuscarConfirmacion').reset();
+
+            Swal.fire({
+                icon: 'success',
+                title: 'Confirmación Encontrada',
+                text: 'Los datos de la confirmación se han cargado en la tabla',
+            });
+        })
+        .catch(error => {
+            console.error('Error al buscar la confirmación:', error);
+            Swal.fire({
+                icon: 'error',
+                title: 'Error al buscar la confirmación',
+                text: error.message || 'Ocurrió un error al intentar buscar la confirmación',
+            });
+            // Limpiar la tabla en caso de error
+            document.getElementById('tablaConfirmacion').getElementsByTagName('tbody')[0].innerHTML = '';
+        });
+}
+
+function buscarMatrimonio(event) {
+    event.preventDefault();
+
+    const documentNumber = document.getElementById('NumDocBuscarMatrimonio').value;
+
+    fetch(`https://api-parroquia.onrender.com/marriage/${documentNumber}`, {
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${localStorage.getItem('tokenSession')}`
+        }
+    })
+    .then(response => {
+        if (!response.ok) {
+            return response.json().then(err => {
+                throw new Error(err.message || 'Matrimonio no encontrado');
+            });
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log('Matrimonio encontrado:', data);
+
+        // Limpiar la tabla
+        const tablaMatrimonio = document.getElementById('tablaMatrimonio').getElementsByTagName('tbody')[0];
+        tablaMatrimonio.innerHTML = '';
+
+        // Crear una nueva fila
+        const row = tablaMatrimonio.insertRow();
+
+        // Insertar celdas con los datos
+        row.insertCell(0).textContent = data.husband.name;
+        row.insertCell(1).textContent = data.husband.lastName;
+        row.insertCell(2).textContent = data.wife.name;
+        row.insertCell(3).textContent = data.wife.lastName;
+        row.insertCell(4).textContent = data.husband.documentNumber;
+        row.insertCell(5).textContent = data.wife.documentNumber;
+        row.insertCell(6).textContent = data.husband.mail || data.wife.mail;
+        row.insertCell(7).textContent = new Date(data.marriageDate).toLocaleDateString();
+
+        document.getElementById('formulariobuscarMatrimonio').reset();
+
+        Swal.fire({
+            icon: 'success',
+            title: 'Matrimonio Encontrado',
+            text: 'Los datos del matrimonio se han cargado en la tabla',
+        });
+    })
+    .catch(error => {
+        console.error('Error al buscar el matrimonio:', error);
+        Swal.fire({
+            icon: 'error',
+            title: 'Error al buscar el matrimonio',
+            text: error.message || 'Ocurrió un error al intentar buscar el matrimonio',
+        });
+        // Limpiar la tabla en caso de error
+        document.getElementById('tablaMatrimonio').getElementsByTagName('tbody')[0].innerHTML = '';
+    });
 }

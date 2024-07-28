@@ -42,6 +42,11 @@ body{
     }
 }
 
+@media (max-width: 768px) {
+    #tablaMatrimonio .columna-oculta-movil {
+        display: none;
+    }
+}
 
   
 
