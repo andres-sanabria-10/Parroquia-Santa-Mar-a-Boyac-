@@ -126,121 +126,147 @@ document.addEventListener('DOMContentLoaded', function () {
                                     </nav>
                                     <hr>
                                      <!-- cards de bautismos -->
-                                    <div class="container" id="bautismosCards">
-                                        <div class="card mt-3 collapse" id="bautismosCardCreate">
-                                            <div class="card-body">
-                                                <h5 class="card-title">Baustimosssss</h5>
-                                                Gestión de las partidas de Bautismo
-                                                <form class="row g-3 needs-validation" novalidate>
-                                                    <div class="col-md-4">
-                                                        <label for="validationCustom01" class="form-label">First
-                                                            name</label>
-                                                        <input type="text" class="form-control" id="validationCustom01"
-                                                            value="Mark" required>
-                                                        <div class="valid-feedback">
-                                                            Looks good!
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <label for="validationCustom02" class="form-label">Last
-                                                            name</label>
-                                                        <input type="text" class="form-control" id="validationCustom02"
-                                                            value="Otto" required>
-                                                        <div class="valid-feedback">
-                                                            Looks good!
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <label for="validationCustomUsername"
-                                                            class="form-label">Username</label>
-                                                        <div class="input-group has-validation">
-                                                            <span class="input-group-text"
-                                                                id="inputGroupPrepend">@</span>
-                                                            <input type="text" class="form-control"
-                                                                id="validationCustomUsername"
-                                                                aria-describedby="inputGroupPrepend" required>
+                                   
+                                    <div class="accordion" id="BautismosCardContainer2">
+                                        <div class="accordion-item">
+                                            <div id="bautismosCardCreate" class="accordion-collapse collapse" data-bs-parent="#BautismosCardContainer2">
+                                                <div class="accordion-body">
+                                                    <h5 class="card-title">Crear partida de baustismo</h5>
+                                                    <form class="row g-3 needs-validation" novalidate id="formularioBautismo">
+                                                        <div class="col-md-6">
+                                                            <label for="validationCustom01" class="form-label">Número de Documento</label>
+                                                            <input type="text" class="form-control" id="validationCustom01" name="documentNumber" required>
                                                             <div class="invalid-feedback">
-                                                                Please choose a username.
+                                                            Por favor proporcione un número de documento válido.
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <label for="validationCustom03" class="form-label">City</label>
-                                                        <input type="text" class="form-control" id="validationCustom03"
-                                                            required>
-                                                        <div class="invalid-feedback">
-                                                            Please provide a valid city.
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-3">
-                                                        <label for="validationCustom04" class="form-label">State</label>
-                                                        <select class="form-select" id="validationCustom04" required>
-                                                            <option selected disabled value="">Choose...</option>
-                                                            <option>...</option>
-                                                        </select>
-                                                        <div class="invalid-feedback">
-                                                            Please select a valid state.
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-3">
-                                                        <label for="validationCustom05" class="form-label">Zip</label>
-                                                        <input type="text" class="form-control" id="validationCustom05"
-                                                            required>
-                                                        <div class="invalid-feedback">
-                                                            Please provide a valid zip.
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-12">
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="checkbox" value=""
-                                                                id="invalidCheck" required>
-                                                            <label class="form-check-label" for="invalidCheck">
-                                                                Agree to terms and conditions
-                                                            </label>
+                                                        <div class="col-md-6">
+                                                            <label for="validationCustom02" class="form-label">Fecha de Bautismo</label>
+                                                            <input type="date" class="form-control" id="validationCustom02" name="baptismDate" required>
                                                             <div class="invalid-feedback">
-                                                                You must agree before submitting.
+                                                            Por favor seleccione una fecha válida.
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="col-12">
-                                                        <button class="btn btn-primary" type="submit">Submit
-                                                            form</button>
-                                                    </div>
-                                                </form>
+                                                        <div class="col-md-12">
+                                                            <label for="validationCustom03" class="form-label">Lugar de Nacimiento</label>
+                                                            <input type="text" class="form-control" id="validationCustom03" name="placeBirth" required>
+                                                            <div class="invalid-feedback">
+                                                            Por favor proporcione un lugar de nacimiento válido.
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <label for="validationCustom04" class="form-label">Nombre del Padre</label>
+                                                            <input type="text" class="form-control" id="validationCustom04" name="fatherName" required>
+                                                            <div class="invalid-feedback">
+                                                            Por favor proporcione el nombre del padre.
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <label for="validationCustom05" class="form-label">Nombre de la Madre</label>
+                                                            <input type="text" class="form-control" id="validationCustom05" name="motherName" required>
+                                                            <div class="invalid-feedback">
+                                                            Por favor proporcione el nombre de la madre.
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <label for="validationCustom06" class="form-label">Padrino 1</label>
+                                                            <input type="text" class="form-control" id="validationCustom06" name="godfather1" required>
+                                                            <div class="invalid-feedback">
+                                                            Por favor proporcione el nombre del primer padrino.
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <label for="validationCustom07" class="form-label">Padrino 2 (Opcional)</label>
+                                                            <input type="text" class="form-control" id="validationCustom07" name="godfather2">
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <button class="btn btn-primary" type="submit">Registrar Bautismo</button>
+                                                        </div>
+                                                        </form>
+                                                  
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="accordion-item">
+                                            <div id="bautismosCardShow" class="accordion-collapse collapse" data-bs-parent="#BautismosCardContainer2">
+                                                <div class="accordion-body">
+                                                    <h5 class="card-title">Buscar Partida</h5>
+                                                    Se buscará la partida con el número de documento
+
+                                                    <form class="row g-3 needs-validation" novalidate id="formulariobuscar">
+                                                        <div class="col-md-4">
+                                                            <label for="validationCustom01" class="form-label">Numero de Documento</label>
+                                                            <input type="text" class="form-control" id="NumDocBuscar" required>
+                                                            <div class="valid-feedback">
+                                                            Looks good!
+                                                            </div>
+                                                        </div>
+                                                         <div class="col-12">
+                                                            <button class="btn btn-primary" type="submit">Buscar</button>
+                                                        </div>
+                                                        </form>
+
+                                                            <table class="table">
+                                                                <thead>
+                                                                    <tr>
+                                                                    <th scope="col">#</th>
+                                                                    <th scope="col">First</th>
+                                                                    <th scope="col">Last</th>
+                                                                    <th scope="col">Handle</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <tr>
+                                                                    <th scope="row">1</th>
+                                                                    <td>Mark</td>
+                                                                    <td>Otto</td>
+                                                                    <td>@mdo</td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="accordion-item">
+                                            <div id="bautismosCardDelete" class="accordion-collapse collapse" data-bs-parent="#BautismosCardContainer2">
+                                                <div class="accordion-body">
+                                                    <h5 class="card-title"> Eliminar Partida</h5>
+                                                    Se eliminará la partida con el número de documento
+
+                                                    <form class="row g-3 needs-validation" novalidate id="formularioEliminar">
+                                                        <div class="col-md-4">
+                                                            <label for="validationCustom01" class="form-label">Numero de Documento</label>
+                                                            <input type="text" class="form-control" id="NumDocEliminar" required>
+                                                            <div class="valid-feedback">
+                                                            Looks good!
+                                                            </div>
+                                                        </div>
+                                                         <div class="col-12">
+                                                            <button class="btn btn-primary" type="submit">Eliminar </button>
+                                                        </div>
+                                                        </form>
+
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="accordion-item">
+                                            <div id="bautismosCardUpdate" class="accordion-collapse collapse" data-bs-parent="#BautismosCardContainer2">
+                                                <div class="accordion-body">
+                                                    <h5 class="card-title">Actualizar Defuncion</h5>
+                                                    Gestión de las partidas de Defuncion
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
 
-
-                                    <div class="container">
-                                        <div class="card mt-3 collapse" id="bautismosCardShow">
-                                            <div class="card-body">
-                                                <h5 class="card-title">Baustimos</h5>
-                                                Gestión de las partidas de Bautismo
-
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="container">
-                                        <div class="card mt-3 collapse" id="bautismosCardDelete">
-                                            <div class="card-body">
-                                                <h5 class="card-title">Baustimos</h5>
-                                                Gestión de las partidas de Bautismo
-
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="container">
-                                        <div class="card mt-3 collapse" id="bautismosCardUpdate">
-                                            <div class="card-body">
-                                                <h5 class="card-title">Baustimos</h5>
-                                                Gestión de las partidas de Bautismo
-
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -318,124 +344,97 @@ document.addEventListener('DOMContentLoaded', function () {
                                             </div>
                                         </div>
                                     </nav>
-
-
                                     <!-- cards de Confirmacion -->
-                                    <div class="container" id="ConfirmacionesCard">
-                                        <div class="card mt-3 collapse" id="ConfirmacionCardCreate">
-                                            <div class="card-body">
-                                                <h5 class="card-title">Confirmacion</h5>
-                                                Gestión de las partidas de Confirmacion
-                                                <form class="row g-3 needs-validation" novalidate>
-                                                    <div class="col-md-4">
-                                                        <label for="validationCustom01" class="form-label">First
-                                                            name</label>
-                                                        <input type="text" class="form-control" id="validationCustom01"
-                                                            value="Mark" required>
-                                                        <div class="valid-feedback">
-                                                            Looks good!
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <label for="validationCustom02" class="form-label">Last
-                                                            name</label>
-                                                        <input type="text" class="form-control" id="validationCustom02"
-                                                            value="Otto" required>
-                                                        <div class="valid-feedback">
-                                                            Looks good!
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <label for="validationCustomUsername"
-                                                            class="form-label">Username</label>
-                                                        <div class="input-group has-validation">
-                                                            <span class="input-group-text"
-                                                                id="inputGroupPrepend">@</span>
-                                                            <input type="text" class="form-control"
-                                                                id="validationCustomUsername"
-                                                                aria-describedby="inputGroupPrepend" required>
-                                                            <div class="invalid-feedback">
-                                                                Please choose a username.
+                                    <div class="accordion" id="ConfirmacionesCardContainer">
+                                        <div class="accordion-item">
+                                            <div id="ConfirmacionCardCreate" class="accordion-collapse collapse" data-bs-parent="#ConfirmacionesCardContainer">
+                                                <div class="accordion-body">
+                                                    <h5 class="card-title">Crear partida de confirmación</h5>
+                                                    Gestión de las partidas de Confirmacion
+                                                        <form class="row g-3 needs-validation" novalidate id="formularioConfirmacion">
+                                                            <div class="col-md-6">
+                                                                <label for="validationCustom01" class="form-label">Número de Documento</label>
+                                                                <input type="text" class="form-control" id="validationCustom10" name="documentNumber" required>
+                                                                <div class="invalid-feedback">
+                                                                    Por favor proporcione un número de documento válido.
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <label for="validationCustom03" class="form-label">City</label>
-                                                        <input type="text" class="form-control" id="validationCustom03"
-                                                            required>
-                                                        <div class="invalid-feedback">
-                                                            Please provide a valid city.
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-3">
-                                                        <label for="validationCustom04" class="form-label">State</label>
-                                                        <select class="form-select" id="validationCustom04" required>
-                                                            <option selected disabled value="">Choose...</option>
-                                                            <option>...</option>
-                                                        </select>
-                                                        <div class="invalid-feedback">
-                                                            Please select a valid state.
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-3">
-                                                        <label for="validationCustom05" class="form-label">Zip</label>
-                                                        <input type="text" class="form-control" id="validationCustom05"
-                                                            required>
-                                                        <div class="invalid-feedback">
-                                                            Please provide a valid zip.
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-12">
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="checkbox" value=""
-                                                                id="invalidCheck" required>
-                                                            <label class="form-check-label" for="invalidCheck">
-                                                                Agree to terms and conditions
-                                                            </label>
-                                                            <div class="invalid-feedback">
-                                                                You must agree before submitting.
+                                                            <div class="col-md-6">
+                                                                <label for="validationCustom02" class="form-label">Fecha de Confirmación</label>
+                                                                <input type="date" class="form-control" id="validationCustom11" name="confirmationDate" required>
+                                                                <div class="invalid-feedback">
+                                                                    Por favor seleccione una fecha válida.
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-12">
-                                                        <button class="btn btn-primary" type="submit">Submit
-                                                            form</button>
-                                                    </div>
-                                                </form>
+                                                            <div class="col-md-6">
+                                                                <label for="validationCustom04" class="form-label">Nombre del Padre</label>
+                                                                <input type="text" class="form-control" id="validationCustom12" name="fatherName" required>
+                                                                <div class="invalid-feedback">
+                                                                    Por favor proporcione el nombre del padre.
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <label for="validationCustom05" class="form-label">Nombre de la Madre</label>
+                                                                <input type="text" class="form-control" id="validationCustom13" name="motherName" required>
+                                                                <div class="invalid-feedback">
+                                                                    Por favor proporcione el nombre de la madre.
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <label for="validationCustom06" class="form-label">Nombre del Padrino</label>
+                                                                <input type="text" class="form-control" id="validationCustom14" name="godfather" required>
+                                                                <div class="invalid-feedback">
+                                                                    Por favor proporcione el nombre del padrino.
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <label for="validationCustom07" class="form-label">Parroquia Bautizada (Opcional)</label>
+                                                                <input type="text" class="form-control" id="validationCustom15" name="baptizedParish">
+                                                            </div>
+                                                            <div class="col-12">
+                                                                <button class="btn btn-primary" type="submit">Registrar Confirmación</button>
+                                                            </div>
+                                                        </form>
+                                                             
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="accordion-item">
+                                            <div id="ConfirmacionCardShow" class="accordion-collapse collapse" data-bs-parent="#ConfirmacionesCardContainer">
+                                                <div class="accordion-body">
+                                                    <h5 class="card-title">Mostrar Confirmacion</h5>
+                                                    Gestión de las partidas de Confirmacion
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="accordion-item">
+                                            <div id="ConfirmacionCardDelete" class="accordion-collapse collapse" data-bs-parent="#ConfirmacionesCardContainer">
+                                                <div class="accordion-body">
+                                                    <h5 class="card-title"> Eliminar Confirmacion</h5>
+                                                    Gestión de las partidas de Confirmacion
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="accordion-item">
+                                            <div id="ConfirmacionCardUpdate" class="accordion-collapse collapse" data-bs-parent="#ConfirmacionesCardContainer">
+                                                <div class="accordion-body">
+                                                    <h5 class="card-title">Actualizar Confirmacion</h5>
+                                                    Gestión de las partidas de Confirmacion
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
 
 
-                                    <div class="container">
-                                        <div class="card mt-3 collapse" id="ConfirmacionCardShow">
-                                            <div class="card-body">
-                                                <h5 class="card-title">Confirmacion</h5>
-                                                Gestión de las partidas de Confirmacion
+                                 
 
-                                            </div>
-                                        </div>
-                                    </div>
 
-                                    <div class="container">
-                                        <div class="card mt-3 collapse" id="ConfirmacionCardDelete">
-                                            <div class="card-body">
-                                                <h5 class="card-title">Confirmacion</h5>
-                                                Gestión de las partidas de Confirmacion
 
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="container">
-                                        <div class="card mt-3 collapse" id="ConfirmacionCardUpdate">
-                                            <div class="card-body">
-                                                <h5 class="card-title">Confirmacion</h5>
-                                                Gestión de las partidas de Confirmacion
-
-                                            </div>
-                                        </div>
-                                    </div>
 
                                 </div>
                             </div>
@@ -519,118 +518,41 @@ document.addEventListener('DOMContentLoaded', function () {
                                     </nav>
 
                                     <!-- cards de Matrimonio -->
-                                    <div class="container" id="MatrimonioCard">
-                                        <div class="card mt-3 collapse" id="MatrimonioCardCreate">
-                                            <div class="card-body">
-                                                <h5 class="card-title">Matrimonio</h5>
-                                                Gestión de las partidas de Matrimonio
-                                                <form class="row g-3 needs-validation" novalidate>
-                                                    <div class="col-md-4">
-                                                        <label for="validationCustom01" class="form-label">First
-                                                            name</label>
-                                                        <input type="text" class="form-control" id="validationCustom01"
-                                                            value="Mark" required>
-                                                        <div class="valid-feedback">
-                                                            Looks good!
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <label for="validationCustom02" class="form-label">Last
-                                                            name</label>
-                                                        <input type="text" class="form-control" id="validationCustom02"
-                                                            value="Otto" required>
-                                                        <div class="valid-feedback">
-                                                            Looks good!
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <label for="validationCustomUsername"
-                                                            class="form-label">Username</label>
-                                                        <div class="input-group has-validation">
-                                                            <span class="input-group-text"
-                                                                id="inputGroupPrepend">@</span>
-                                                            <input type="text" class="form-control"
-                                                                id="validationCustomUsername"
-                                                                aria-describedby="inputGroupPrepend" required>
-                                                            <div class="invalid-feedback">
-                                                                Please choose a username.
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <label for="validationCustom03" class="form-label">City</label>
-                                                        <input type="text" class="form-control" id="validationCustom03"
-                                                            required>
-                                                        <div class="invalid-feedback">
-                                                            Please provide a valid city.
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-3">
-                                                        <label for="validationCustom04" class="form-label">State</label>
-                                                        <select class="form-select" id="validationCustom04" required>
-                                                            <option selected disabled value="">Choose...</option>
-                                                            <option>...</option>
-                                                        </select>
-                                                        <div class="invalid-feedback">
-                                                            Please select a valid state.
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-3">
-                                                        <label for="validationCustom05" class="form-label">Zip</label>
-                                                        <input type="text" class="form-control" id="validationCustom05"
-                                                            required>
-                                                        <div class="invalid-feedback">
-                                                            Please provide a valid zip.
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-12">
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="checkbox" value=""
-                                                                id="invalidCheck" required>
-                                                            <label class="form-check-label" for="invalidCheck">
-                                                                Agree to terms and conditions
-                                                            </label>
-                                                            <div class="invalid-feedback">
-                                                                You must agree before submitting.
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-12">
-                                                        <button class="btn btn-primary" type="submit">Submit
-                                                            form</button>
-                                                    </div>
-                                                </form>
+                                    <div class="accordion" id="MatrimonioCardContainer1">
+                                        <div class="accordion-item">
+                                            <div id="MatrimonioCardCreate" class="accordion-collapse collapse" data-bs-parent="#MatrimonioCardContainer1">
+                                                <div class="accordion-body">
+                                                    <h5 class="card-title">Matrimonio</h5>
+                                                    Gestión de las partidas de Matrimonio
+                                                    <!-- ... (formulario sin cambios) ... -->Matrimonio
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
 
-
-                                    <div class="container">
-                                        <div class="card mt-3 collapse" id="MatrimonioCardShow">
-                                            <div class="card-body">
-                                                <h5 class="card-title">Matrimonio</h5>
-                                                Gestión de las partidas de Matrimonio
-
+                                        <div class="accordion-item">
+                                            <div id="MatrimonioCardShow" class="accordion-collapse collapse" data-bs-parent="#MatrimonioCardContainer1">
+                                                <div class="accordion-body">
+                                                    <h5 class="card-title">Mostrar Matrimonio</h5>
+                                                    Gestión de las partidas de Matrimonio gg
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
 
-                                    <div class="container">
-                                        <div class="card mt-3 collapse" id="MatrimonioCardDelete">
-                                            <div class="card-body">
-                                                <h5 class="card-title">Matrimonio</h5>
-                                                Gestión de las partidas de Matrimonio
-
+                                        <div class="accordion-item">
+                                            <div id="MatrimonioCardDelete" class="accordion-collapse collapse" data-bs-parent="#MatrimonioCardContainer1">
+                                                <div class="accordion-body">
+                                                    <h5 class="card-title"> Eliminar Matrimonio</h5>
+                                                    Gestión de las partidas de Matrimonio
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
 
-                                    <div class="container">
-                                        <div class="card mt-3 collapse" id="MatrimonioCardUpdate">
-                                            <div class="card-body">
-                                                <h5 class="card-title">Matrimonio</h5>
-                                                Gestión de las partidas de Matrimonio
-
+                                        <div class="accordion-item">
+                                            <div id="MatrimonioCardUpdate" class="accordion-collapse collapse" data-bs-parent="#MatrimonioCardContainer1">
+                                                <div class="accordion-body">
+                                                    <h5 class="card-title">Actualizar Matrimonio</h5>
+                                                    Gestión de las partidas de matrimonio
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -719,119 +641,42 @@ document.addEventListener('DOMContentLoaded', function () {
                                         </div>
                                     </nav>
 
-                                    <!-- cards de Matrimonio -->
-                                    <div class="container" id="DefuncionCard">
-                                        <div class="card mt-3 collapse" id="DefuncionCardCreate">
-                                            <div class="card-body">
-                                                <h5 class="card-title">Defuncion</h5>
-                                                Gestión de las partidas de Defuncion
-                                                <form class="row g-3 needs-validation" novalidate>
-                                                    <div class="col-md-4">
-                                                        <label for="validationCustom01" class="form-label">First
-                                                            name</label>
-                                                        <input type="text" class="form-control" id="validationCustom01"
-                                                            value="Mark" required>
-                                                        <div class="valid-feedback">
-                                                            Looks good!
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <label for="validationCustom02" class="form-label">Last
-                                                            name</label>
-                                                        <input type="text" class="form-control" id="validationCustom02"
-                                                            value="Otto" required>
-                                                        <div class="valid-feedback">
-                                                            Looks good!
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <label for="validationCustomUsername"
-                                                            class="form-label">Username</label>
-                                                        <div class="input-group has-validation">
-                                                            <span class="input-group-text"
-                                                                id="inputGroupPrepend">@</span>
-                                                            <input type="text" class="form-control"
-                                                                id="validationCustomUsername"
-                                                                aria-describedby="inputGroupPrepend" required>
-                                                            <div class="invalid-feedback">
-                                                                Please choose a username.
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <label for="validationCustom03" class="form-label">City</label>
-                                                        <input type="text" class="form-control" id="validationCustom03"
-                                                            required>
-                                                        <div class="invalid-feedback">
-                                                            Please provide a valid city.
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-3">
-                                                        <label for="validationCustom04" class="form-label">State</label>
-                                                        <select class="form-select" id="validationCustom04" required>
-                                                            <option selected disabled value="">Choose...</option>
-                                                            <option>...</option>
-                                                        </select>
-                                                        <div class="invalid-feedback">
-                                                            Please select a valid state.
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-3">
-                                                        <label for="validationCustom05" class="form-label">Zip</label>
-                                                        <input type="text" class="form-control" id="validationCustom05"
-                                                            required>
-                                                        <div class="invalid-feedback">
-                                                            Please provide a valid zip.
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-12">
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="checkbox" value=""
-                                                                id="invalidCheck" required>
-                                                            <label class="form-check-label" for="invalidCheck">
-                                                                Agree to terms and conditions
-                                                            </label>
-                                                            <div class="invalid-feedback">
-                                                                You must agree before submitting.
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-12">
-                                                        <button class="btn btn-primary" type="submit">Submit
-                                                            form</button>
-                                                    </div>
-                                                </form>
+                                    <!-- cards de Defuncion -->
+                                    <div class="accordion" id="DefuncionCardContainer2">
+                                        <div class="accordion-item">
+                                            <div id="DefuncionCardCreate" class="accordion-collapse collapse" data-bs-parent="#DefuncionCardContainer2">
+                                                <div class="accordion-body">
+                                                    <h5 class="card-title">Matrimonio</h5>
+                                                    Gestión de las partidas de Defuncion
+                                                    <!-- ... (formulario sin cambios) ... -->Defuncion
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
 
-
-                                    <div class="container">
-                                        <div class="card mt-3 collapse" id="DefuncionCardShow">
-                                            <div class="card-body">
-                                                <h5 class="card-title">Defuncion</h5>
-                                                Gestión de las partidas de Defuncion
-
+                                        <div class="accordion-item">
+                                            <div id="DefuncionCardShow" class="accordion-collapse collapse" data-bs-parent="#DefuncionCardContainer2">
+                                                <div class="accordion-body">
+                                                    <h5 class="card-title">Mostrar Defuncion</h5>
+                                                    Gestión de las partidas de Defuncion gg
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
 
-                                    <div class="container">
-                                        <div class="card mt-3 collapse" id="DefuncionCardDelete">
-                                            <div class="card-body">
-                                                <h5 class="card-title">Defuncion</h5>
-                                                Gestión de las partidas de Defuncion
-
+                                        <div class="accordion-item">
+                                            <div id="DefuncionCardDelete" class="accordion-collapse collapse" data-bs-parent="#DefuncionCardContainer2">
+                                                <div class="accordion-body">
+                                                    <h5 class="card-title"> Eliminar Defuncion</h5>
+                                                    Gestión de las partidas de Defuncion
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
 
-                                    <div class="container">
-                                        <div class="card mt-3 collapse" id="DefuncionCardUpdate">
-                                            <div class="card-body">
-                                                <h5 class="card-title">Defuncion</h5>
-                                                Gestión de las partidas de Defuncion
-
+                                        <div class="accordion-item">
+                                            <div id="DefuncionCardUpdate" class="accordion-collapse collapse" data-bs-parent="#DefuncionCardContainer2">
+                                                <div class="accordion-body">
+                                                    <h5 class="card-title">Actualizar Defuncion</h5>
+                                                    Gestión de las partidas de Defuncion
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -862,8 +707,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Reemplaza el contenido del main
         mainContent.innerHTML = registrationFormHTML;
+        const formularioBautismo = document.getElementById('formularioBautismo');
+        if (formularioBautismo) {
+            formularioBautismo.addEventListener('submit', crearBautismo);
+        }
 
-
+      
 
     }
 
@@ -876,3 +725,117 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
 });
+
+// Función para crear un nuevo bautismo
+function crearBautismo(event) {
+    event.preventDefault();
+
+    const documentNumber = document.getElementById('validationCustom01').value;
+    const baptismDate = document.getElementById('validationCustom02').value;
+    const placeBirth = document.getElementById('validationCustom03').value;
+    const fatherName = document.getElementById('validationCustom04').value;
+    const motherName = document.getElementById('validationCustom05').value;
+    const godfather1 = document.getElementById('validationCustom06').value;
+    const godfather2 = document.getElementById('validationCustom07').value;
+
+    const bautismoData = {
+        documentNumber,
+        baptismDate,
+        placeBirth,
+        fatherName,
+        motherName,
+        godfather1,
+        godfather2
+    };
+
+    fetch('https://api-parroquia.onrender.com/baptism/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('tokenSession')}`
+        },
+        body: JSON.stringify(bautismoData),
+    })
+    .then(response => {
+        if (!response.ok) {
+            return response.json().then(err => {
+                throw new Error(err.message || 'Error al crear el bautismo');
+            });
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log('Bautismo creado:', data);
+        Swal.fire({
+            icon: 'success',
+            title: 'Bautismo Registrado',
+            text: 'El bautismo se ha registrado exitosamente',
+        });
+        // Aquí podrías limpiar el formulario o redirigir a otra página
+        document.getElementById('formularioBautismo').reset();
+    })
+    .catch(error => {
+        console.error('Error al crear el bautismo:', error);
+        Swal.fire({
+            icon: 'error',
+            title: 'Error al registrar el bautismo',
+            text: error.message || 'Ocurrió un error al intentar registrar el bautismo',
+        });
+    });
+}
+
+// Función para crear un nuevo confirmacion
+function crearConfirmacion(event) {
+    event.preventDefault();
+
+    const documentNumber = document.getElementById('validationCustom10').value;
+    const confirmationDate = document.getElementById('validationCustom11').value;
+    const fatherName = document.getElementById('validationCustom12').value;
+    const motherName = document.getElementById('validationCustom13').value;
+    const godfather = document.getElementById('validationCustom14').value;
+    const baptizedParish = document.getElementById('validationCustom15').value;
+
+    const confirmacionData = {
+        documentNumber,
+        confirmationDate,
+        fatherName,
+        motherName,
+        godfather,
+        baptizedParish
+    };
+
+    fetch('https://api-parroquia.onrender.com/confirmation/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('tokenSession')}`
+        },
+        body: JSON.stringify(confirmacionData),
+    })
+    .then(response => {
+        if (!response.ok) {
+            return response.json().then(err => {
+                throw new Error(err.message || 'Error al crear la confirmación');
+            });
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log('Confirmación creada:', data);
+        Swal.fire({
+            icon: 'success',
+            title: 'Confirmación Registrada',
+            text: 'La confirmación se ha registrado exitosamente',
+        });
+        // Aquí podrías limpiar el formulario o redirigir a otra página
+        document.getElementById('formularioConfirmacion').reset();
+    })
+    .catch(error => {
+        console.error('Error al crear la confirmación:', error);
+        Swal.fire({
+            icon: 'error',
+            title: 'Error al registrar la confirmación',
+            text: error.message || 'Ocurrió un error al intentar registrar la confirmación',
+        });
+    });
+}
