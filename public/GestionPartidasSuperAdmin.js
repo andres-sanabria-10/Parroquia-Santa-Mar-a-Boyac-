@@ -350,45 +350,45 @@ document.addEventListener('DOMContentLoaded', function () {
                                             <div id="ConfirmacionCardCreate" class="accordion-collapse collapse" data-bs-parent="#ConfirmacionesCardContainer">
                                                 <div class="accordion-body">
                                                     <h5 class="card-title">Crear partida de confirmación</h5>
-                                                    Gestión de las partidas de Confirmacion
+                                                   
                                                         <form class="row g-3 needs-validation" novalidate id="formularioConfirmacion">
                                                             <div class="col-md-6">
-                                                                <label for="validationCustom01" class="form-label">Número de Documento</label>
+                                                                <label for="validationCustom10" class="form-label">Número de Documento</label>
                                                                 <input type="text" class="form-control" id="validationCustom10" name="documentNumber" required>
                                                                 <div class="invalid-feedback">
                                                                     Por favor proporcione un número de documento válido.
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6">
-                                                                <label for="validationCustom02" class="form-label">Fecha de Confirmación</label>
+                                                                <label for="validationCustom11" class="form-label">Fecha de Confirmación</label>
                                                                 <input type="date" class="form-control" id="validationCustom11" name="confirmationDate" required>
                                                                 <div class="invalid-feedback">
                                                                     Por favor seleccione una fecha válida.
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6">
-                                                                <label for="validationCustom04" class="form-label">Nombre del Padre</label>
+                                                                <label for="validationCustom12" class="form-label">Nombre del Padre</label>
                                                                 <input type="text" class="form-control" id="validationCustom12" name="fatherName" required>
                                                                 <div class="invalid-feedback">
                                                                     Por favor proporcione el nombre del padre.
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6">
-                                                                <label for="validationCustom05" class="form-label">Nombre de la Madre</label>
+                                                                <label for="validationCustom13" class="form-label">Nombre de la Madre</label>
                                                                 <input type="text" class="form-control" id="validationCustom13" name="motherName" required>
                                                                 <div class="invalid-feedback">
                                                                     Por favor proporcione el nombre de la madre.
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6">
-                                                                <label for="validationCustom06" class="form-label">Nombre del Padrino</label>
+                                                                <label for="validationCustom14" class="form-label">Nombre del Padrino</label>
                                                                 <input type="text" class="form-control" id="validationCustom14" name="godfather" required>
                                                                 <div class="invalid-feedback">
                                                                     Por favor proporcione el nombre del padrino.
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6">
-                                                                <label for="validationCustom07" class="form-label">Parroquia Bautizada (Opcional)</label>
+                                                                <label for="validationCustom15" class="form-label">Parroquia Bautizada (Opcional)</label>
                                                                 <input type="text" class="form-control" id="validationCustom15" name="baptizedParish">
                                                             </div>
                                                             <div class="col-12">
@@ -522,9 +522,78 @@ document.addEventListener('DOMContentLoaded', function () {
                                         <div class="accordion-item">
                                             <div id="MatrimonioCardCreate" class="accordion-collapse collapse" data-bs-parent="#MatrimonioCardContainer1">
                                                 <div class="accordion-body">
-                                                    <h5 class="card-title">Matrimonio</h5>
-                                                    Gestión de las partidas de Matrimonio
-                                                    <!-- ... (formulario sin cambios) ... -->Matrimonio
+                                                     <h5 class="card-title">Crear partida de matrimonio</h5>
+                                                   <form class="row g-3 needs-validation" novalidate id="formularioMatrimonio">
+                                                            <div class="col-md-6">
+                                                                <label for="husbandDocumentNumber" class="form-label">Número de Documento del Esposo</label>
+                                                                <input type="text" class="form-control" id="husbandDocumentNumber" name="husbandDocumentNumber" required>
+                                                                <div class="invalid-feedback">
+                                                                    Por favor proporcione el número de documento del esposo.
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <label for="wifeDocumentNumber" class="form-label">Número de Documento de la Esposa</label>
+                                                                <input type="text" class="form-control" id="wifeDocumentNumber" name="wifeDocumentNumber" required>
+                                                                <div class="invalid-feedback">
+                                                                    Por favor proporcione el número de documento de la esposa.
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <label for="marriageDate" class="form-label">Fecha de Matrimonio</label>
+                                                                <input type="date" class="form-control" id="marriageDate" name="marriageDate" required>
+                                                                <div class="invalid-feedback">
+                                                                    Por favor seleccione una fecha válida.
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <label for="father_husband" class="form-label">Padre del Esposo</label>
+                                                                <input type="text" class="form-control" id="father_husband" name="father_husband">
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <label for="mother_husband" class="form-label">Madre del Esposo</label>
+                                                                <input type="text" class="form-control" id="mother_husband" name="mother_husband">
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <label for="father_wife" class="form-label">Padre de la Esposa</label>
+                                                                <input type="text" class="form-control" id="father_wife" name="father_wife">
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <label for="mother_wife" class="form-label">Madre de la Esposa</label>
+                                                                <input type="text" class="form-control" id="mother_wife" name="mother_wife">
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <label for="godfather1" class="form-label">Padrino 1</label>
+                                                                <input type="text" class="form-control" id="godfather1" name="godfather1" required>
+                                                                <div class="invalid-feedback">
+                                                                    Por favor proporcione el nombre del primer padrino.
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <label for="godfather2" class="form-label">Padrino 2</label>
+                                                                <input type="text" class="form-control" id="godfather2" name="godfather2" required>
+                                                                <div class="invalid-feedback">
+                                                                    Por favor proporcione el nombre del segundo padrino.
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <label for="witness1" class="form-label">Testigo 1</label>
+                                                                <input type="text" class="form-control" id="witness1" name="witness1" required>
+                                                                <div class="invalid-feedback">
+                                                                    Por favor proporcione el nombre del primer testigo.
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <label for="witness2" class="form-label">Testigo 2</label>
+                                                                <input type="text" class="form-control" id="witness2" name="witness2" required>
+                                                                <div class="invalid-feedback">
+                                                                    Por favor proporcione el nombre del segundo testigo.
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-12">
+                                                                <button class="btn btn-primary" type="submit">Registrar Matrimonio</button>
+                                                            </div>
+                                                        </form>
+                                                  
                                                 </div>
                                             </div>
                                         </div>
@@ -646,9 +715,58 @@ document.addEventListener('DOMContentLoaded', function () {
                                         <div class="accordion-item">
                                             <div id="DefuncionCardCreate" class="accordion-collapse collapse" data-bs-parent="#DefuncionCardContainer2">
                                                 <div class="accordion-body">
-                                                    <h5 class="card-title">Matrimonio</h5>
-                                                    Gestión de las partidas de Defuncion
-                                                    <!-- ... (formulario sin cambios) ... -->Defuncion
+                                                   <h5 class="card-title">Crear partida de defunción</h5>
+                                                   <form class="row g-3 needs-validation" novalidate id="formularioDefuncion">
+                                                        <div class="col-md-6">
+                                                            <label for="documentNumberDeath" class="form-label">Número de Documento del Fallecido</label>
+                                                            <input type="text" class="form-control" id="documentNumberDeath" name="documentNumberDeath" required>
+                                                            <div class="invalid-feedback">
+                                                                Por favor proporcione un número de documento válido.
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <label for="deathDate" class="form-label">Fecha de Defunción</label>
+                                                            <input type="date" class="form-control" id="deathDate" name="deathDate" required>
+                                                            <div class="invalid-feedback">
+                                                                Por favor seleccione una fecha válida.
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <label for="fatherNameDeath" class="form-label">Nombre del Padre</label>
+                                                            <input type="text" class="form-control" id="fatherNameDeath" name="fatherNameDeath" required>
+                                                            <div class="invalid-feedback">
+                                                                Por favor proporcione el nombre del padre.
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <label for="motherNameDeath" class="form-label">Nombre de la Madre</label>
+                                                            <input type="text" class="form-control" id="motherNameDeath" name="motherNameDeath" required>
+                                                            <div class="invalid-feedback">
+                                                                Por favor proporcione el nombre de la madre.
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <label for="civilStatus" class="form-label">Estado Civil</label>
+                                                            <input type="text" class="form-control" id="civilStatus" name="civilStatus" required>
+                                                            <div class="invalid-feedback">
+                                                                Por favor proporcione el estado civil.
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <label for="cemeteryName" class="form-label">Nombre del Cementerio</label>
+                                                            <input type="text" class="form-control" id="cemeteryName" name="cemeteryName" required>
+                                                            <div class="invalid-feedback">
+                                                                Por favor proporcione el nombre del cementerio.
+                                                            </div>
+                                                        </div>
+                                                       
+                                                        <div class="col-12">
+                                                            <button class="btn btn-primary" type="submit">Registrar Defunción</button>
+                                                        </div>
+                                                    </form>
+
+                                                   
+                                                   
                                                 </div>
                                             </div>
                                         </div>
@@ -688,19 +806,6 @@ document.addEventListener('DOMContentLoaded', function () {
                         </div>
                     </div>
 
-
-
-
-
-
-
-
-
-
-
-                    
-
-
                 </div>
 
          `;
@@ -712,7 +817,22 @@ document.addEventListener('DOMContentLoaded', function () {
             formularioBautismo.addEventListener('submit', crearBautismo);
         }
 
-      
+        const formularioConfirmacion = document.getElementById('formularioConfirmacion');
+        if (formularioConfirmacion) {
+            formularioConfirmacion.addEventListener('submit', crearConfirmacion);
+        }
+
+        const formularioMatrimonio = document.getElementById('formularioMatrimonio');
+        if (formularioMatrimonio) {
+            formularioMatrimonio.addEventListener('submit', crearMatrimonio);
+        }
+
+        const formularioDefuncion = document.getElementById('formularioDefuncion');
+        if (formularioDefuncion) {
+            formularioDefuncion.addEventListener('submit', registrarDefuncion);
+        }
+
+
 
     }
 
@@ -756,32 +876,32 @@ function crearBautismo(event) {
         },
         body: JSON.stringify(bautismoData),
     })
-    .then(response => {
-        if (!response.ok) {
-            return response.json().then(err => {
-                throw new Error(err.message || 'Error al crear el bautismo');
+        .then(response => {
+            if (!response.ok) {
+                return response.json().then(err => {
+                    throw new Error(err.message || 'Error al crear el bautismo');
+                });
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Bautismo creado:', data);
+            Swal.fire({
+                icon: 'success',
+                title: 'Bautismo Registrado',
+                text: 'El bautismo se ha registrado exitosamente',
             });
-        }
-        return response.json();
-    })
-    .then(data => {
-        console.log('Bautismo creado:', data);
-        Swal.fire({
-            icon: 'success',
-            title: 'Bautismo Registrado',
-            text: 'El bautismo se ha registrado exitosamente',
+            // Aquí podrías limpiar el formulario o redirigir a otra página
+            document.getElementById('formularioBautismo').reset();
+        })
+        .catch(error => {
+            console.error('Error al crear el bautismo:', error);
+            Swal.fire({
+                icon: 'error',
+                title: 'Error al registrar el bautismo',
+                text: error.message || 'Ocurrió un error al intentar registrar el bautismo',
+            });
         });
-        // Aquí podrías limpiar el formulario o redirigir a otra página
-        document.getElementById('formularioBautismo').reset();
-    })
-    .catch(error => {
-        console.error('Error al crear el bautismo:', error);
-        Swal.fire({
-            icon: 'error',
-            title: 'Error al registrar el bautismo',
-            text: error.message || 'Ocurrió un error al intentar registrar el bautismo',
-        });
-    });
 }
 
 // Función para crear un nuevo confirmacion
@@ -812,30 +932,132 @@ function crearConfirmacion(event) {
         },
         body: JSON.stringify(confirmacionData),
     })
-    .then(response => {
-        if (!response.ok) {
-            return response.json().then(err => {
-                throw new Error(err.message || 'Error al crear la confirmación');
+        .then(response => {
+            if (!response.ok) {
+                return response.json().then(err => {
+                    throw new Error(err.message || 'Error al crear la confirmación');
+                });
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Confirmación creada:', data);
+            Swal.fire({
+                icon: 'success',
+                title: 'Confirmación Registrada',
+                text: 'La confirmación se ha registrado exitosamente',
             });
-        }
-        return response.json();
-    })
-    .then(data => {
-        console.log('Confirmación creada:', data);
-        Swal.fire({
-            icon: 'success',
-            title: 'Confirmación Registrada',
-            text: 'La confirmación se ha registrado exitosamente',
+            // Aquí podrías limpiar el formulario o redirigir a otra página
+            document.getElementById('formularioConfirmacion').reset();
+        })
+        .catch(error => {
+            console.error('Error al crear la confirmación:', error);
+            Swal.fire({
+                icon: 'error',
+                title: 'Error al registrar la confirmación',
+                text: error.message || 'Ocurrió un error al intentar registrar la confirmación',
+            });
         });
-        // Aquí podrías limpiar el formulario o redirigir a otra página
-        document.getElementById('formularioConfirmacion').reset();
+}
+
+
+function crearMatrimonio(event) {
+    event.preventDefault();
+
+    const marriageData = {
+        husbandDocumentNumber: document.getElementById('husbandDocumentNumber').value,
+        wifeDocumentNumber: document.getElementById('wifeDocumentNumber').value,
+        marriageDate: document.getElementById('marriageDate').value,
+        father_husband: document.getElementById('father_husband').value,
+        mother_husband: document.getElementById('mother_husband').value,
+        father_wife: document.getElementById('father_wife').value,
+        mother_wife: document.getElementById('mother_wife').value,
+        godfather1: document.getElementById('godfather1').value,
+        godfather2: document.getElementById('godfather2').value,
+        witness1: document.getElementById('witness1').value,
+        witness2: document.getElementById('witness2').value
+    };
+
+    fetch('https://api-parroquia.onrender.com/marriage/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('tokenSession')}`
+        },
+        body: JSON.stringify(marriageData),
     })
-    .catch(error => {
-        console.error('Error al crear la confirmación:', error);
-        Swal.fire({
-            icon: 'error',
-            title: 'Error al registrar la confirmación',
-            text: error.message || 'Ocurrió un error al intentar registrar la confirmación',
+        .then(response => {
+            if (!response.ok) {
+                return response.json().then(err => {
+                    throw new Error(err.message || 'Error al crear el matrimonio');
+                });
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Matrimonio creado:', data);
+            Swal.fire({
+                icon: 'success',
+                title: 'Matrimonio Registrado',
+                text: 'El matrimonio se ha registrado exitosamente',
+            });
+            document.getElementById('formularioMatrimonio').reset();
+        })
+        .catch(error => {
+            console.error('Error al crear el matrimonio:', error);
+            Swal.fire({
+                icon: 'error',
+                title: 'Error al registrar el matrimonio',
+                text: error.message || 'Ocurrió un error al intentar registrar el matrimonio',
+            });
         });
-    });
+}
+
+
+function registrarDefuncion(event) {
+    event.preventDefault();
+
+    const deathData = {
+        documentNumber: document.getElementById('documentNumberDeath').value,
+        deathDate: document.getElementById('deathDate').value,
+        fatherName: document.getElementById('fatherNameDeath').value,
+        motherName: document.getElementById('motherNameDeath').value,
+        civilStatus: document.getElementById('civilStatus').value,
+        cemeteryName: document.getElementById('cemeteryName').value,
+      
+    };
+
+    fetch('https://api-parroquia.onrender.com/death/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('tokenSession')}`
+        },
+        body: JSON.stringify(deathData),
+    })
+        .then(response => {
+            if (!response.ok) {
+                return response.json().then(err => {
+                    throw new Error(err.message || 'Error al registrar la defunción');
+                });
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Defunción registrada:', data);
+            Swal.fire({
+                icon: 'success',
+                title: 'Defunción Registrada',
+                text: 'La defunción se ha registrado exitosamente',
+            });
+            document.getElementById('formularioDefuncion').reset();
+        })
+        .catch(error => {
+            console.error('Error al registrar la defunción:', error);
+            Swal.fire({
+                icon: 'error',
+                title: 'Error al registrar la defunción',
+                text: error.message || 'Ocurrió un error al intentar registrar la defunción',
+            });
+        });
 }
