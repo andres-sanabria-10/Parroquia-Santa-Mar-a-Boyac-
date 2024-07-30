@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     </div>
                     <!-- Card de bautismos -->
                     <!-- Contenedor colapsable -->
-                    <div class="collapse" id="bautismosCard">
+                    <div class="collapse" id="bautismosCard" style="max-height: 100vh; overflow-y: auto;">
                         <div class="container mt-3 pb-4 text-center" style="background-color: #45709b;">
                             <div class="card mt-3">
                                 <div class="card-body">
@@ -127,62 +127,65 @@ document.addEventListener('DOMContentLoaded', function () {
                                     <hr>
                                      <!-- cards de bautismos -->
                                    
-                                    <div class="accordion" id="BautismosCardContainer2">
+                                    <div class="accordion" id="BautismosCardContainer2" >
                                         <div class="accordion-item">
                                             <div id="bautismosCardCreate" class="accordion-collapse collapse" data-bs-parent="#BautismosCardContainer2">
-                                                <div class="accordion-body">
-                                                    <h5 class="card-title">Crear partida de baustismo</h5>
-                                                    <form class="row g-3 needs-validation" novalidate id="formularioBautismo">
-                                                        <div class="col-md-6">
-                                                            <label for="validationCustom01" class="form-label">Número de Documento</label>
-                                                            <input type="text" class="form-control" id="validationCustom01" name="documentNumber" required>
-                                                            <div class="invalid-feedback">
-                                                            Por favor proporcione un número de documento válido.
+                                                <div class="accordion-body" >
+                                                    
+                                                        <h5 class="card-title">Crear partida de baustismo</h5>
+                                                        <form class="row g-3 needs-validation" novalidate id="formularioBautismo">
+                                                            <div class="col-md-6 ">
+                                                                <label for="validationCustom01" class="form-label">Número de Documento</label>
+                                                                <input type="text" class="form-control" id="validationCustom01" name="documentNumber" required>
+                                                                <div class="invalid-feedback">
+                                                                Por favor proporcione un número de documento válido.
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <label for="validationCustom02" class="form-label">Fecha de Bautismo</label>
-                                                            <input type="date" class="form-control" id="validationCustom02" name="baptismDate" required>
-                                                            <div class="invalid-feedback">
-                                                            Por favor seleccione una fecha válida.
+                                                            <div class="col-md-6">
+                                                                <label for="validationCustom02" class="form-label">Fecha de Bautismo</label>
+                                                                <input type="date" class="form-control" id="validationCustom02" name="baptismDate" required>
+                                                                <div class="invalid-feedback">
+                                                                Por favor seleccione una fecha válida.
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="col-md-12">
-                                                            <label for="validationCustom03" class="form-label">Lugar de Nacimiento</label>
-                                                            <input type="text" class="form-control" id="validationCustom03" name="placeBirth" required>
-                                                            <div class="invalid-feedback">
-                                                            Por favor proporcione un lugar de nacimiento válido.
+                                                            <div class="col-md-12">
+                                                                <label for="validationCustom03" class="form-label">Lugar de Nacimiento</label>
+                                                                <input type="text" class="form-control" id="validationCustom03" name="placeBirth" required>
+                                                                <div class="invalid-feedback">
+                                                                Por favor proporcione un lugar de nacimiento válido.
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <label for="validationCustom04" class="form-label">Nombre del Padre</label>
-                                                            <input type="text" class="form-control" id="validationCustom04" name="fatherName" required>
-                                                            <div class="invalid-feedback">
-                                                            Por favor proporcione el nombre del padre.
+                                                            <div class="col-md-6">
+                                                                <label for="validationCustom04" class="form-label">Nombre del Padre</label>
+                                                                <input type="text" class="form-control" id="validationCustom04" name="fatherName" required>
+                                                                <div class="invalid-feedback">
+                                                                Por favor proporcione el nombre del padre.
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <label for="validationCustom05" class="form-label">Nombre de la Madre</label>
-                                                            <input type="text" class="form-control" id="validationCustom05" name="motherName" required>
-                                                            <div class="invalid-feedback">
-                                                            Por favor proporcione el nombre de la madre.
+                                                            <div class="col-md-6">
+                                                                <label for="validationCustom05" class="form-label">Nombre de la Madre</label>
+                                                                <input type="text" class="form-control" id="validationCustom05" name="motherName" required>
+                                                                <div class="invalid-feedback">
+                                                                Por favor proporcione el nombre de la madre.
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <label for="validationCustom06" class="form-label">Padrino 1</label>
-                                                            <input type="text" class="form-control" id="validationCustom06" name="godfather1" required>
-                                                            <div class="invalid-feedback">
-                                                            Por favor proporcione el nombre del primer padrino.
+                                                            <div class="col-md-6">
+                                                                <label for="validationCustom06" class="form-label">Padrino 1</label>
+                                                                <input type="text" class="form-control" id="validationCustom06" name="godfather1" required>
+                                                                <div class="invalid-feedback">
+                                                                Por favor proporcione el nombre del primer padrino.
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <label for="validationCustom07" class="form-label">Padrino 2 (Opcional)</label>
-                                                            <input type="text" class="form-control" id="validationCustom07" name="godfather2">
-                                                        </div>
-                                                        <div class="col-12">
-                                                            <button class="btn btn-primary" type="submit">Registrar Bautismo</button>
-                                                        </div>
-                                                        </form>
+                                                            <div class="col-md-6">
+                                                                <label for="validationCustom07" class="form-label">Padrino 2 (Opcional)</label>
+                                                                <input type="text" class="form-control" id="validationCustom07" name="godfather2">
+                                                            </div>
+                                                            <div class="col-12">
+                                                                <button class="btn btn-primary" type="submit">Registrar Bautismo</button>
+                                                            </div>
+                                                            </form>
+                                                   
+                                                    
                                                   
                                                 </div>
                                             </div>
@@ -238,7 +241,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                             <div id="bautismosCardDelete" class="accordion-collapse collapse" data-bs-parent="#BautismosCardContainer2">
                                                 <div class="accordion-body">
                                                     <h5 class="card-title"> Eliminar Partida</h5>
-                                                    Se eliminará la partida con el número de documento
+                                                    Se eliminará la partida Bautismo con el número de documento
 
                                                       <form class="row g-3 needs-validation" novalidate id="formularioEliminarBautismo">
                                                         <div class="col-md-4">
@@ -262,8 +265,21 @@ document.addEventListener('DOMContentLoaded', function () {
                                         <div class="accordion-item">
                                             <div id="bautismosCardUpdate" class="accordion-collapse collapse" data-bs-parent="#BautismosCardContainer2">
                                                 <div class="accordion-body">
-                                                    <h5 class="card-title">Actualizar Defuncion</h5>
-                                                    Gestión de las partidas de Defuncion
+                                                    <h5 class="card-title">Actualizar Bautismo</h5>
+                                                    Se actualizará la partida Bautismo con el número de documento
+
+                                                      <form class="row g-3 needs-validation" novalidate id="formularioActualizarBautismo">
+                                                        <div class="col-md-4">
+                                                            <label for="NumDocActualizarBautismo" class="form-label">Número de Documento</label>
+                                                            <input type="text" class="form-control" id="NumDocActualizarBautismo" required>
+                                                            <div class="valid-feedback">
+                                                                ¡Se ve bien!
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <button class="btn btn-primary" type="submit">Buscar</button>
+                                                        </div>
+                                                    </form>
                                                 </div>
                                             </div>
                                         </div>
@@ -275,7 +291,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     </div>
 
                     <!-- Card de Confirmación -->
-                    <div class="collapse" id="ConfirmacionesCard">
+                    <div class="collapse" id="ConfirmacionesCard" style="max-height: 500px; overflow-y: auto;">
                         <div class="container mt-3 pb-4 text-center" style="background-color: #f8f9fa;">
                             <div class="card mt-3">
                                 <div class="card-body">
@@ -452,7 +468,20 @@ document.addEventListener('DOMContentLoaded', function () {
                                             <div id="ConfirmacionCardDelete" class="accordion-collapse collapse" data-bs-parent="#ConfirmacionesCardContainer">
                                                 <div class="accordion-body">
                                                     <h5 class="card-title"> Eliminar Confirmacion</h5>
-                                                    Gestión de las partidas de Confirmacion
+                                                    Se eliminará la partida de confirmación con el número de documento
+
+                                                      <form class="row g-3 needs-validation" novalidate id="formularioEliminarConfirmacion">
+                                                        <div class="col-md-4">
+                                                            <label for="NumDocEliminarConfirmacion" class="form-label">Número de Documento</label>
+                                                            <input type="text" class="form-control" id="NumDocEliminarConfirmacion" required>
+                                                            <div class="valid-feedback">
+                                                                ¡Se ve bien!
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <button class="btn btn-primary" type="submit">Buscar</button>
+                                                        </div>
+                                                    </form>
                                                 </div>
                                             </div>
                                         </div>
@@ -460,8 +489,21 @@ document.addEventListener('DOMContentLoaded', function () {
                                         <div class="accordion-item">
                                             <div id="ConfirmacionCardUpdate" class="accordion-collapse collapse" data-bs-parent="#ConfirmacionesCardContainer">
                                                 <div class="accordion-body">
-                                                    <h5 class="card-title">Actualizar Confirmacion</h5>
-                                                    Gestión de las partidas de Confirmacion
+                                                    <h5 class="card-title">Actualizar confirmación</h5>
+                                                    Se actualizará la partida confirmación con el número de documento
+
+                                                      <form class="row g-3 needs-validation" novalidate id="formularioActualizarConfirmacion">
+                                                        <div class="col-md-4">
+                                                            <label for="NumDocActualizarConfimacion" class="form-label">Número de Documento</label>
+                                                            <input type="text" class="form-control" id="NumDocActualizarConfimacion" required>
+                                                            <div class="valid-feedback">
+                                                                ¡Se ve bien!
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <button class="btn btn-primary" type="submit">Buscar</button>
+                                                        </div>
+                                                    </form>
                                                 </div>
                                             </div>
                                         </div>
@@ -482,7 +524,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
                     <!-- Card de Matrimonio -->
-                    <div class="collapse" id="MatrimonioCard">
+                    <div class="collapse" id="MatrimonioCard" style="max-height: 500px; overflow-y: auto;">
                         <div class="container mt-3 pb-4 text-center" style="background-color: #f8f9fa;">
                             <div class="card mt-3">
                                 <div class="card-body">
@@ -534,7 +576,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                                             data-bs-toggle="collapse"
                                                             data-bs-target="#MatrimonioCardDelete"
                                                             aria-expanded="false"
-                                                            aria-controls="MatrimonioCardDelete">>
+                                                            aria-controls="MatrimonioCardDelete">
                                                             <i class="bi bi-trash me-2"></i> Eliminar
                                                         </a>
                                                     </li>
@@ -545,7 +587,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                                             data-bs-toggle="collapse"
                                                             data-bs-target="#MatrimonioCardUpdate"
                                                             aria-expanded="false"
-                                                            aria-controls="MatrimonioCardUpdate">>
+                                                            aria-controls="MatrimonioCardUpdate">
                                                             <i class="bi bi-pencil me-2"></i> Actualizar
                                                         </a>
                                                     </li>
@@ -687,12 +729,12 @@ document.addEventListener('DOMContentLoaded', function () {
                                                 <div class="accordion-body">
                                                     <h5 class="card-title"> Eliminar Matrimonio</h5>
                                                   
-                                                     Se eliminará la partida con el número de documento
+                                                      Se eliminará la partida Matrimonio con el número de documento
 
-                                                   <form class="row g-3 needs-validation" novalidate id="formularioEliminarMatrimonio">
+                                                      <form class="row g-3 needs-validation" novalidate id="formularioEliminarMatrimonio">
                                                         <div class="col-md-4">
-                                                            <label for="NumDocBuscarMatrimonio" class="form-label">Número de Documento</label>
-                                                            <input type="text" class="form-control" id="NumDocBuscarMatrimonio" required>
+                                                            <label for="NumDocEliminarMatrimonio" class="form-label">Número de Documento</label>
+                                                            <input type="text" class="form-control" id="NumDocEliminarMatrimonio" required>
                                                             <div class="valid-feedback">
                                                                 ¡Se ve bien!
                                                             </div>
@@ -702,11 +744,6 @@ document.addEventListener('DOMContentLoaded', function () {
                                                         </div>
                                                     </form>
 
-
-
-
-
-
                                                 </div>
                                             </div>
                                         </div>
@@ -715,7 +752,20 @@ document.addEventListener('DOMContentLoaded', function () {
                                             <div id="MatrimonioCardUpdate" class="accordion-collapse collapse" data-bs-parent="#MatrimonioCardContainer1">
                                                 <div class="accordion-body">
                                                     <h5 class="card-title">Actualizar Matrimonio</h5>
-                                                    Gestión de las partidas de matrimonio
+                                                    Se actualizará la partida Matrimonio con el número de documento
+
+                                                      <form class="row g-3 needs-validation" novalidate id="formularioActualizarMatrimonio">
+                                                        <div class="col-md-4">
+                                                            <label for="NumDocActualizarMatrimonio" class="form-label">Número de Documento</label>
+                                                            <input type="text" class="form-control" id="NumDocActualizarMatrimonio" required>
+                                                            <div class="valid-feedback">
+                                                                ¡Se ve bien!
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <button class="btn btn-primary" type="submit">Buscar</button>
+                                                        </div>
+                                                    </form>
                                                 </div>
                                             </div>
                                         </div>
@@ -733,7 +783,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     </div>
 
                     <!-- Card de Defunción -->
-                    <div class="collapse" id="DefuncionCard">
+                    <div class="collapse" id="DefuncionCard" style="max-height: 500px; overflow-y: auto;">
                         <div class="container mt-3 pb-4 text-center" style="background-color: #f8f9fa;">
                             <div class="card mt-3">
                                 <div class="card-body">
@@ -842,9 +892,14 @@ document.addEventListener('DOMContentLoaded', function () {
                                                         </div>
                                                         <div class="col-md-6">
                                                             <label for="civilStatus" class="form-label">Estado Civil</label>
-                                                            <input type="text" class="form-control" id="civilStatus" name="civilStatus" required>
+                                                            <select class="form-select" id="civilStatus" name="civilStatus" required>
+                                                                <option value="" selected disabled>Seleccione una opción</option>
+                                                                <option value="soltero">Soltero</option>
+                                                                <option value="casado">Casado</option>
+                                                                <option value="union libre">Unión Libre</option>
+                                                            </select>
                                                             <div class="invalid-feedback">
-                                                                Por favor proporcione el estado civil.
+                                                                Por favor seleccione el estado civil.
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6">
@@ -912,7 +967,20 @@ document.addEventListener('DOMContentLoaded', function () {
                                             <div id="DefuncionCardDelete" class="accordion-collapse collapse" data-bs-parent="#DefuncionCardContainer2">
                                                 <div class="accordion-body">
                                                     <h5 class="card-title"> Eliminar Defuncion</h5>
-                                                    Gestión de las partidas de Defuncion
+                                                    Se eliminará la partida Matrimonio con el número de documento
+
+                                                      <form class="row g-3 needs-validation" novalidate id="formularioEliminarDefuncion">
+                                                        <div class="col-md-4">
+                                                            <label for="NumDocEliminarDefuncion" class="form-label">Número de Documento</label>
+                                                            <input type="text" class="form-control" id="NumDocEliminarDefuncion" required>
+                                                            <div class="valid-feedback">
+                                                                ¡Se ve bien!
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <button class="btn btn-primary" type="submit">Buscar</button>
+                                                        </div>
+                                                    </form>
                                                 </div>
                                             </div>
                                         </div>
@@ -921,7 +989,20 @@ document.addEventListener('DOMContentLoaded', function () {
                                             <div id="DefuncionCardUpdate" class="accordion-collapse collapse" data-bs-parent="#DefuncionCardContainer2">
                                                 <div class="accordion-body">
                                                     <h5 class="card-title">Actualizar Defuncion</h5>
-                                                    Gestión de las partidas de Defuncion
+                                                    Se actualizará la partida Defuncion con el número de documento
+
+                                                      <form class="row g-3 needs-validation" novalidate id="formularioActualizarDefuncion">
+                                                        <div class="col-md-4">
+                                                            <label for="NumDocActualizarDefuncion" class="form-label">Número de Documento</label>
+                                                            <input type="text" class="form-control" id="NumDocActualizarDefuncion" required>
+                                                            <div class="valid-feedback">
+                                                                ¡Se ve bien!
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <button class="btn btn-primary" type="submit">Buscar</button>
+                                                        </div>
+                                                    </form>
                                                 </div>
                                             </div>
                                         </div>
@@ -985,10 +1066,40 @@ document.addEventListener('DOMContentLoaded', function () {
             formEliminarBautismo.addEventListener('submit', buscarYEliminarBautismo);
         }
 
+        const formEliminarConfirmacion = document.getElementById('formularioEliminarConfirmacion');
+        if (formEliminarConfirmacion) {
+            formEliminarConfirmacion.addEventListener('submit', buscarYEliminarConfirmacion);
+        }
 
+        const formEliminarMatrimonio = document.getElementById('formularioEliminarMatrimonio');
+        if (formEliminarMatrimonio) {
+            formEliminarMatrimonio.addEventListener('submit', buscarYEliminarMatrimonio);
+        }
 
+        const formEliminarDefuncion = document.getElementById('formularioEliminarDefuncion');
+        if (formEliminarDefuncion) {
+            formEliminarDefuncion.addEventListener('submit', buscarYEliminarDefuncion);
+        }
 
+        const formActualizarDefuncion = document.getElementById('formularioActualizarDefuncion');
+        if (formActualizarDefuncion) {
+            formActualizarDefuncion.addEventListener('submit', buscarYEditarDefuncion);
+        }
 
+        const formActualizarMatrimonio = document.getElementById('formularioActualizarMatrimonio');
+        if (formActualizarMatrimonio) {
+            formActualizarMatrimonio.addEventListener('submit', buscarYEditarMatrimonio);
+        }
+
+        const formActualizarBaustismo = document.getElementById('formularioActualizarBautismo');
+        if (formActualizarBaustismo) {
+            formActualizarBaustismo.addEventListener('submit', buscarYEditarBautismo);
+        }
+
+        const formActualizarConfirmacion = document.getElementById('formularioActualizarConfirmacion');
+        if (formActualizarConfirmacion) {
+            formActualizarConfirmacion.addEventListener('submit', buscarYEditarConfirmacion);
+        }
 
 
     }
@@ -1003,7 +1114,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });
 
-// Función para crear un nuevo bautismo
+// crear de todas las partidas
 function crearBautismo(event) {
     event.preventDefault();
 
@@ -1118,9 +1229,26 @@ function crearConfirmacion(event) {
 }
 
 
+function validateForm() {
+    const requiredFields = ['husbandDocumentNumber', 'wifeDocumentNumber', 'marriageDate', 'godfather1', 'godfather2', 'witness1', 'witness2'];
+    for (let field of requiredFields) {
+        if (!document.getElementById(field).value) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Campos requeridos',
+                text: `Por favor, complete todos los campos obligatorios.`,
+            });
+            return false;
+        }
+    }
+    return true;
+}
+
 function crearMatrimonio(event) {
     event.preventDefault();
-
+    if (!validateForm()) {
+        return;
+    }
     const marriageData = {
         husbandDocumentNumber: document.getElementById('husbandDocumentNumber').value,
         wifeDocumentNumber: document.getElementById('wifeDocumentNumber').value,
@@ -1219,7 +1347,7 @@ function registrarDefuncion(event) {
         });
 }
 
-
+//observar de todas las partidas(mostrar)
 
 function buscarBautismo(event) {
     event.preventDefault();
@@ -1478,6 +1606,7 @@ function buscarDefuncion(event) {
 }
 
 
+//aca empieza eliminar para todas las partidas
 function buscarYEliminarBautismo(event) {
     event.preventDefault();
 
@@ -1561,3 +1690,728 @@ function eliminarBautismo(documentNumber) {
         });
 }
 
+
+
+
+
+function buscarYEliminarConfirmacion(event) {
+    event.preventDefault();
+
+    const documentNumber = document.getElementById('NumDocEliminarConfirmacion').value.trim();
+
+    // Primero, buscar el bautismo
+    fetch(`https://api-parroquia.onrender.com/confirmation/${documentNumber}`, {
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${localStorage.getItem('tokenSession')}`
+        }
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Confirmación no encontrado');
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Mostrar la información y pedir confirmación
+            Swal.fire({
+                title: '¿Estás seguro de eliminar este Confirmación?',
+                html: `
+                <p><strong>Nombre:</strong> ${data.confirmed.name}</p>
+                <p><strong>Apellido:</strong> ${data.confirmed.lastName}</p>
+                <p><strong>Documento:</strong> ${data.confirmed.documentNumber}</p>
+                <p><strong>Correo:</strong> ${data.confirmed.mail}</p>
+            `,
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Sí, eliminar',
+                cancelButtonText: 'Cancelar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Si el usuario confirma, proceder con la eliminación
+                    eliminarConfirmacion(documentNumber);
+                }
+            });
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: error.message || 'Ocurrió un error al buscar el Confirmación',
+            });
+        });
+}
+
+function eliminarConfirmacion(documentNumber) {
+    fetch(`https://api-parroquia.onrender.com/confirmation/${documentNumber}`, {
+        method: 'DELETE',
+        headers: {
+            'Authorization': `Bearer ${localStorage.getItem('tokenSession')}`
+        }
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Error al eliminar el Confirmación');
+            }
+            return response.json();
+        })
+        .then(data => {
+            Swal.fire({
+                icon: 'success',
+                title: 'Éxito',
+                text: 'Confirmación eliminado correctamente',
+            });
+            // Limpiar el formulario
+            document.getElementById('formularioEliminarConfirmacion').reset();
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: error.message || 'Ocurrió un error al eliminar el Confirmación',
+            });
+        });
+}
+
+function buscarYEliminarMatrimonio(event) {
+    event.preventDefault();
+
+    const documentNumber = document.getElementById('NumDocEliminarMatrimonio').value.trim();
+
+    // Primero, buscar el bautismo
+    fetch(`https://api-parroquia.onrender.com/marriage/${documentNumber}`, {
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${localStorage.getItem('tokenSession')}`
+        }
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Matrimonio no encontrado');
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Mostrar la información y pedir confirmación
+            Swal.fire({
+                title: '¿Estás seguro de eliminar este Matrimonio?',
+                html: `
+                <p><strong>Nombre Esposo:</strong> ${data.husband.name}</p>
+                <p><strong>Apellido Esposo:</strong> ${data.husband.lastName}</p>
+                <p><strong>Documento Esposo:</strong> ${data.husband.documentNumber}</p>
+                <p><strong>Nombre Esposa:</strong> ${data.wife.name}</p>
+                <p><strong>Apellido Esposa:</strong> ${data.wife.lastName}</p>
+                <p><strong>Documento Esposa:</strong> ${data.wife.documentNumber}</p>
+                <p><strong>Correo:</strong> ${data.husband.mail}</p>
+            `,
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Sí, eliminar',
+                cancelButtonText: 'Cancelar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Si el usuario confirma, proceder con la eliminación
+                    eliminarMatrimonio(documentNumber);
+                }
+            });
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: error.message || 'Ocurrió un error al buscar el Matrimonio',
+            });
+        });
+}
+
+function eliminarMatrimonio(documentNumber) {
+    fetch(`https://api-parroquia.onrender.com/marriage/${documentNumber}`, {
+        method: 'DELETE',
+        headers: {
+            'Authorization': `Bearer ${localStorage.getItem('tokenSession')}`
+        }
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Error al eliminar el Matrimonio');
+            }
+            return response.json();
+        })
+        .then(data => {
+            Swal.fire({
+                icon: 'success',
+                title: 'Éxito',
+                text: 'Matrimonio eliminado correctamente',
+            });
+            // Limpiar el formulario
+            document.getElementById('formularioEliminarMatrimonio').reset();
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: error.message || 'Ocurrió un error al eliminar el Matrimonio',
+            });
+        });
+}
+
+
+function buscarYEliminarDefuncion(event) {
+    event.preventDefault();
+
+    const documentNumber = document.getElementById('NumDocEliminarDefuncion').value.trim();
+
+    // Primero, buscar el bautismo
+    fetch(`https://api-parroquia.onrender.com/death/${documentNumber}`, {
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${localStorage.getItem('tokenSession')}`
+        }
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Defuncion no encontrado');
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Mostrar la información y pedir confirmación
+            Swal.fire({
+                title: '¿Estás seguro de eliminar este Defuncion?',
+                html: `
+                <p><strong>Nombre :</strong> ${data.dead.name}</p>
+                <p><strong>Apellido:</strong> ${data.dead.lastName}</p>
+                <p><strong>Documento Esp:</strong> ${data.dead.documentNumber}</p>
+
+                <p><strong>Correo:</strong> ${data.dead.mail}</p>
+            `,
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Sí, eliminar',
+                cancelButtonText: 'Cancelar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Si el usuario confirma, proceder con la eliminación
+                    eliminarDefuncion(documentNumber);
+                }
+            });
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: error.message || 'Ocurrió un error al buscar el Defuncion',
+            });
+        });
+}
+
+function eliminarDefuncion(documentNumber) {
+    fetch(`https://api-parroquia.onrender.com/death/${documentNumber}`, {
+        method: 'DELETE',
+        headers: {
+            'Authorization': `Bearer ${localStorage.getItem('tokenSession')}`
+        }
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Error al eliminar el Defuncion');
+            }
+            return response.json();
+        })
+        .then(data => {
+            Swal.fire({
+                icon: 'success',
+                title: 'Éxito',
+                text: 'Defuncion eliminado correctamente',
+            });
+            // Limpiar el formulario
+            document.getElementById('formularioEliminarDefuncion').reset();
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: error.message || 'Ocurrió un error al eliminar el Matrimonio',
+            });
+        });
+}
+
+//actualizar de las partidas 
+
+
+function buscarYEditarDefuncion(event) {
+    event.preventDefault();
+
+    const documentNumber = document.getElementById('NumDocActualizarDefuncion').value.trim();
+
+    if (!documentNumber) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Por favor, ingrese un número de documento válido',
+        });
+        return;
+    }
+
+    // Primero, buscar la defunción
+    fetch(`https://api-parroquia.onrender.com/death/${documentNumber}`, {
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${localStorage.getItem('tokenSession')}`
+        }
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Defunción no encontrada');
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Verificar si los datos son válidos
+            if (!data || typeof data !== 'object' || Object.values(data).every(val => val === undefined)) {
+                throw new Error('No se encontraron datos válidos para esta defunción');
+            }
+
+            // Mostrar la información en un modal editable
+            Swal.fire({
+                title: 'Editar Defunción',
+                html: `
+                <div class="swal2-input-group">
+                    <label for="swal-input-civil-status">Estado Civil:</label>
+                    <select id="swal-input-civil-status" class="swal2-select">
+                        <option value="">Seleccione una opción</option>
+                        <option value="soltero" ${data.civilStatus === 'soltero' ? 'selected' : ''}>Soltero</option>
+                        <option value="casado" ${data.civilStatus === 'casado' ? 'selected' : ''}>Casado</option>
+                        <option value="union libre" ${data.civilStatus === 'union libre' ? 'selected' : ''}>Unión Libre</option>
+                    </select>
+                </div
+                <div class="swal2-input-group">
+                    <label for="swal-input-cemetery"> Cementerio:</label>
+                    <input id="swal-input-cemetery" class="swal2-input" value="${data.cemeteryName || ''}" placeholder="Nombre del cementerio">
+                </div>
+                <div class="swal2-input-group">
+                    <label for="swal-input-funeral-date">Fecha del Funeral:</label>
+                    <input id="swal-input-funeral-date" class="swal2-input" type="date" value="${data.funeralDate || ''}" placeholder="Fecha del Funeral">
+                </div>
+            `,
+                focusConfirm: false,
+                showCancelButton: true,
+                confirmButtonText: 'Actualizar',
+                cancelButtonText: 'Cancelar',
+                preConfirm: () => {
+                    return {
+                        civilStatus: document.getElementById('swal-input-civil-status').value,
+                        cemeteryName: document.getElementById('swal-input-cemetery').value,
+                        funeralDate: document.getElementById('swal-input-funeral-date').value,
+                    }
+                }
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    actualizarDefuncion(documentNumber, result.value);
+                }
+            });
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: error.message || 'Ocurrió un error al buscar la defunción',
+            });
+        });
+}
+
+function actualizarDefuncion(documentNumber, datosActualizados) {
+    fetch(`https://api-parroquia.onrender.com/death/${documentNumber}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('tokenSession')}`
+        },
+        body: JSON.stringify(datosActualizados)
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Error al actualizar la defunción');
+            }
+            return response.json();
+        })
+        .then(data => {
+            Swal.fire({
+                icon: 'success',
+                title: 'Éxito',
+                text: 'La defunción ha sido actualizada correctamente',
+            });
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: error.message || 'Ocurrió un error al actualizar la defunción',
+            });
+        });
+}
+
+
+
+
+
+function buscarYEditarMatrimonio(event) {
+    event.preventDefault();
+
+    const documentNumber = document.getElementById('NumDocActualizarMatrimonio').value.trim();
+
+    if (!documentNumber) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Por favor, ingrese un número de documento válido',
+        });
+        return;
+    }
+
+    // Primero, buscar la defunción
+    fetch(`https://api-parroquia.onrender.com/marriage/${documentNumber}`, {
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${localStorage.getItem('tokenSession')}`
+        }
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Matrimonio no encontrada');
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Verificar si los datos son válidos
+            if (!data || typeof data !== 'object' || Object.values(data).every(val => val === undefined)) {
+                throw new Error('No se encontraron datos válidos para esta Matrimonio');
+            }
+
+            // Mostrar la información en un modal editable
+            Swal.fire({
+                title: 'Editar Defunción',
+                html: `
+                
+                <div class="swal2-input-group">
+                    <label for="swal-input-father-husband"> Madre esposa:</label>
+                    <input id="swal-input-father-husband" class="swal2-input" value="${data.father_husband || ''}" placeholder="madre esposa">
+                </div>
+                <div class="swal2-input-group">
+                    <label for="swal-input-Mother-husband">Padre Esposa:</label>
+                    <input id="swal-input-Mother-husband" class="swal2-input" value="${data.mother_husband || ''}" placeholder="Padre esposa">
+                </div>
+                <div class="swal2-input-group">
+                    <label for="swal-input-Mother-wife">Madre Esposo:</label>
+                    <input id="swal-input-Mother-wife" class="swal2-input" value="${data.father_wife || ''}" placeholder="Madre esposa">
+                </div>
+                <div class="swal2-input-group">
+                    <label for="swal-input-father-wife">Padre Esposo:</label>
+                    <input id="swal-input-father-wife" class="swal2-input" value="${data.mother_wife || ''}" placeholder="Padre esposa">
+                </div>
+            `,
+                focusConfirm: false,
+                showCancelButton: true,
+                confirmButtonText: 'Actualizar',
+                cancelButtonText: 'Cancelar',
+                preConfirm: () => {
+                    return {
+                        father_husband: document.getElementById('swal-input-father-husband').value,
+                        mother_husband: document.getElementById('swal-input-Mother-husband').value,
+                        father_wife: document.getElementById('swal-input-father-wife').value,
+                        mother_wife: document.getElementById('swal-input-Mother-wife').value,
+                       
+                    }
+                }
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    actualizarMatrimonio(documentNumber, result.value);
+                }
+            });
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: error.message || 'Ocurrió un error al buscar la defunción',
+            });
+        });
+}
+
+function actualizarMatrimonio(documentNumber, datosActualizados) {
+    fetch(`https://api-parroquia.onrender.com/marriage/${documentNumber}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('tokenSession')}`
+        },
+        body: JSON.stringify(datosActualizados)
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Error al actualizar la Matrimonio');
+            }
+            return response.json();
+        })
+        .then(data => {
+            Swal.fire({
+                icon: 'success',
+                title: 'Éxito',
+                text: 'El matrimonio ha sido actualizada correctamente',
+            });
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: error.message || 'Ocurrió un error al actualizar el matrimonio',
+            });
+        });
+}
+
+function buscarYEditarBautismo(event) {
+    event.preventDefault();
+
+    const documentNumber = document.getElementById('NumDocActualizarBautismo').value.trim();
+
+    if (!documentNumber) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Por favor, ingrese un número de documento válido',
+        });
+        return;
+    }
+
+    // Primero, buscar la defunción
+    fetch(`https://api-parroquia.onrender.com/baptism/${documentNumber}`, {
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${localStorage.getItem('tokenSession')}`
+        }
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Bautismo no encontrada');
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Verificar si los datos son válidos
+            if (!data || typeof data !== 'object' || Object.values(data).every(val => val === undefined)) {
+                throw new Error('No se encontraron datos válidos para esta Bautismo');
+            }
+
+            // Mostrar la información en un modal editable
+            Swal.fire({
+                title: 'Editar Bautismo',
+                html: `
+                
+                <div class="swal2-input-group">
+                    <label for="swal-input-father"> Padre:</label>
+                    <input id="swal-input-father" class="swal2-input" value="${data.fatherName || ''}" placeholder="Padre">
+                </div>
+                <div class="swal2-input-group">
+                    <label for="swal-input-Mother">Madre:</label>
+                    <input id="swal-input-Mother" class="swal2-input" value="${data.motherName || ''}" placeholder="Madre ">
+                </div>
+                <div class="swal2-input-group">
+                    <label for="swal-input-godfather1">Padrino 1:</label>
+                    <input id="swal-input-godfather1" class="swal2-input" value="${data.godfather1|| ''}" placeholder="Padrino 1">
+                </div>
+                <div class="swal2-input-group">
+                    <label for="swal-input-godfather2">Padrino 2:</label>
+                    <input id="swal-input-godfather2" class="swal2-input" value="${data.godfather2 || ''}" placeholder="Padrino 2">
+                </div>
+            `,
+                focusConfirm: false,
+                showCancelButton: true,
+                confirmButtonText: 'Actualizar',
+                cancelButtonText: 'Cancelar',
+                preConfirm: () => {
+                    return {
+                        fatherName: document.getElementById('swal-input-father').value,
+                        motherName: document.getElementById('swal-input-Mother').value,
+                        godfather1: document.getElementById('swal-input-godfather1').value,
+                        godfather2: document.getElementById('swal-input-godfather2').value,
+                       
+                    }
+                }
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    actualizarBautismo(documentNumber, result.value);
+                }
+            });
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: error.message || 'Ocurrió un error al buscar la defunción',
+            });
+        });
+}
+
+function actualizarBautismo(documentNumber, datosActualizados) {
+    fetch(`https://api-parroquia.onrender.com/baptism/${documentNumber}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('tokenSession')}`
+        },
+        body: JSON.stringify(datosActualizados)
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Error al actualizar la Bautismo');
+            }
+            return response.json();
+        })
+        .then(data => {
+            Swal.fire({
+                icon: 'success',
+                title: 'Éxito',
+                text: 'El Bautismo ha sido actualizada correctamente',
+            });
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: error.message || 'Ocurrió un error al actualizar el Bautismo',
+            });
+        });
+}
+
+
+
+function buscarYEditarConfirmacion(event) {
+    event.preventDefault();
+
+    const documentNumber = document.getElementById('NumDocActualizarConfimacion').value.trim();
+
+    if (!documentNumber) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Por favor, ingrese un número de documento válido',
+        });
+        return;
+    }
+
+    // Primero, buscar la defunción
+    fetch(`https://api-parroquia.onrender.com/confirmation/${documentNumber}`, {
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${localStorage.getItem('tokenSession')}`
+        }
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Confirmacion no encontrada');
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Verificar si los datos son válidos
+            if (!data || typeof data !== 'object' || Object.values(data).every(val => val === undefined)) {
+                throw new Error('No se encontraron datos válidos para esta Confirmacion');
+            }
+
+            // Mostrar la información en un modal editable
+            Swal.fire({
+                title: 'Editar Confirmacion',
+                html: `
+                
+                <div class="swal2-input-group">
+                    <label for="swal-input-father"> Padre:</label>
+                    <input id="swal-input-father" class="swal2-input" value="${data.fatherName || ''}" placeholder="Padre">
+                </div>
+                <div class="swal2-input-group">
+                    <label for="swal-input-Mother">Madre:</label>
+                    <input id="swal-input-Mother" class="swal2-input" value="${data.motherName || ''}" placeholder="Madre ">
+                </div>
+                <div class="swal2-input-group">
+                    <label for="swal-input-godfather1">Padrino 1:</label>
+                    <input id="swal-input-godfather1" class="swal2-input" value="${data.godfather|| ''}" placeholder="Padrino 1">
+                </div>
+              
+            `,
+                focusConfirm: false,
+                showCancelButton: true,
+                confirmButtonText: 'Actualizar',
+                cancelButtonText: 'Cancelar',
+                preConfirm: () => {
+                    return {
+                        fatherName: document.getElementById('swal-input-father').value,
+                        motherName: document.getElementById('swal-input-Mother').value,
+                        godfather: document.getElementById('swal-input-godfather1').value,
+                       
+                       
+                    }
+                }
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    actualizarConfirmacion(documentNumber, result.value);
+                }
+            });
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: error.message || 'Ocurrió un error al buscar la defunción',
+            });
+        });
+}
+
+function actualizarConfirmacion(documentNumber, datosActualizados) {
+    fetch(`https://api-parroquia.onrender.com/confirmation/${documentNumber}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('tokenSession')}`
+        },
+        body: JSON.stringify(datosActualizados)
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Error al actualizar la Confirmacion');
+            }
+            return response.json();
+        })
+        .then(data => {
+            Swal.fire({
+                icon: 'success',
+                title: 'Éxito',
+                text: 'La Confirmacion ha sido actualizada correctamente',
+            });
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: error.message || 'Ocurrió un error al actualizar el Confirmacion',
+            });
+        });
+}
