@@ -302,8 +302,7 @@ function initializeFormFunctionality() {
                 const response = await fetch('https://api-parroquia.onrender.com/auth/verify-Email', {
                     method: 'POST',
                     headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${token}`
+                        'Content-Type': 'application/json'
 
                     },
                     body: JSON.stringify({ mail: email }),
