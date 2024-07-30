@@ -48,6 +48,15 @@ body{
     }
 }
 
-  
+.arreglo-tamaño {
+    width: 60%;
+}
+
+/* Cambiar ancho a 50% para pantallas de al menos 568px */
+@media (max-width: 568px) {
+    .arreglo-tamaño {
+        width: 40%;
+    }
+}
 
 
