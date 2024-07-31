@@ -4,11 +4,12 @@ document.addEventListener('DOMContentLoaded', function() {
         window.location.href = '/';
         return;
     }
-
+    const rolesPermitidos = ['Usuario', 'Admin', 'SuperAdmin'];
     // Verificar el token con el backend
     authenticatedFetch('https://api-parroquia.onrender.com/accessRole', {
         method: 'GET'
     })
+    
     .then(response => response.json())
     .then(data => {
         if (data.role !== 'Usuario') {
