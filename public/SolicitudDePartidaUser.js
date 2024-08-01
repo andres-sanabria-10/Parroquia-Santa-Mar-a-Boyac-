@@ -16,10 +16,11 @@ document.addEventListener('DOMContentLoaded', function () {
         const SolicitudPartidashtml = `
         <div class="container px-4 py-5">
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
-                <div class="col col-sm-5">
-                    <div class="card h-100">
-                        <div style="height: 200px;" class=" d-flex justify-content-center align-items-center">
-                            <img src="/img/bautismo.png" class="card-img-top img-fluid  h-100" alt="..." style="width: 60%;">
+                <div class="col ">
+                    <div class="card h-100 justify-content-center align-items-center">
+                        <div style="height: 50%;  width: 50%" class="d-flex ">
+                        
+                            <img src="/img/bautismo.jpeg" class="card-img-top img-fluid  h-100" alt="...">
                         </div>
                         <div class="card-body">
                             <h5 class="card-title">Bautismo</h5>
@@ -29,9 +30,9 @@ document.addEventListener('DOMContentLoaded', function () {
                     </div>
                 </div>
                 <div class="col">
-                    <div class="card h-100">
-                        <div style="height: 200px;" class="d-flex justify-content-center align-items-center">
-                            <img src="/img/vela-confirmacion.png" class="card-img-top img-fluid arreglo-tamaño h-100" alt="...">
+                    <div class="card h-100 justify-content-center align-items-center">
+                        <div style="height: 50%;  width: 50%" class="d-flex ">
+                            <img src="/img/vela.jpeg" class="card-img-top img-fluid arreglo-tamaño h-100" alt="...">
                         </div>
                         <div class="card-body">
                             <h5 class="card-title">Confirmación</h5>
@@ -41,9 +42,9 @@ document.addEventListener('DOMContentLoaded', function () {
                     </div>
                 </div>
                 <div class="col">
-                    <div class="card h-100">
-                        <div style="height: 200px;" class="d-flex justify-content-center align-items-center">
-                            <img src="/img/anillos.png" class="card-img-top img-fluid  h-100" alt="...">
+                    <div class="card h-100 justify-content-center align-items-center">
+                        <div style="height: 50%;  width: 50%" class="d-flex ">
+                            <img src="/img/casados.jpeg" class="card-img-top img-fluid  h-100" alt="...">
                         </div>
                         <div class="card-body">
                             <h5 class="card-title">Matrimonio</h5>
@@ -63,124 +64,8 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('SolicitudDePartidaConfirmacion').addEventListener('click', () => solicitarPartida('Confirmation'));
         document.getElementById('SolicitudDePartidaMatrimonio').addEventListener('click', () => solicitarPartida('Marriage'));
     }
-    document.addEventListener('DOMContentLoaded', function () {
-        const mainContent = document.getElementById('Principal');
-        const SolicitudPartidas = document.getElementById('SolicitudDePartidas');
-        const inicioLink = document.getElementById('inicioLink');
-        const mobileinicioLink = document.getElementById('MobileinicioLink');
-    
-        const contenidoInicial = `
-            <div class="container px-5 my-5 text-center">
-                <img src="/img/parroquiaSantaMaria.png" class="img-fluid" alt="">
-            </div>
-        `;
-    
-        function handleGestionMisasClick(e) {
-            e.preventDefault();
-            const SolicitudPartidashtml = `
-            <div class="container px-4 py-5">
-                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
-                    <div class="col col-sm-5">
-                        <div class="card h-100">
-                            <div style="height: 200px;" class=" d-flex justify-content-center align-items-center">
-                                <img src="/img/bautismo.png" class="card-img-top img-fluid  h-100" alt="..." style="width: 60%;">
-                            </div>
-                            <div class="card-body">
-                                <h5 class="card-title">Bautismo</h5>
-                                <p class="card-text">Se entregan partidas de bautismo desde 2015 a 2024</p>
-                                <a href="#" class="btn btn-primary" id="SolicitudDePartidaBautismo">Solicitar</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card h-100">
-                            <div style="height: 200px;" class="d-flex justify-content-center align-items-center">
-                                <img src="/img/vela-confirmacion.png" class="card-img-top img-fluid arreglo-tamaño h-100" alt="...">
-                            </div>
-                            <div class="card-body">
-                                <h5 class="card-title">Confirmación</h5>
-                                <p class="card-text">Se entregan partidas de Confirmación desde 2015 a 2024</p>
-                                <a href="#" class="btn btn-primary" id="SolicitudDePartidaConfirmacion">Solicitar</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card h-100">
-                            <div style="height: 200px;" class="d-flex justify-content-center align-items-center">
-                                <img src="/img/anillos.png" class="card-img-top img-fluid  h-100" alt="...">
-                            </div>
-                            <div class="card-body">
-                                <h5 class="card-title">Matrimonio</h5>
-                                <p class="card-text">Se entregan partidas de Matrimonio desde 2015 a 2024</p>
-                                <a href="#" class="btn btn-primary" id="SolicitudDePartidaMatrimonio">Solicitar</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            `;
-    
-            mainContent.innerHTML = SolicitudPartidashtml;
-    
-            // Agregar event listeners para los botones de solicitud
-            document.getElementById('SolicitudDePartidaBautismo').addEventListener('click', () => solicitarPartida('Baptism'));
-            document.getElementById('SolicitudDePartidaConfirmacion').addEventListener('click', () => solicitarPartida('Confirmation'));
-            document.getElementById('SolicitudDePartidaMatrimonio').addEventListener('click', () => solicitarPartida('Marriage'));
-        }
-    
-        function handleInicioClick(e) {
-            e.preventDefault();
-            mainContent.innerHTML = contenidoInicial;
-        }
-        const token = localStorage.getItem('tokenSession');
-    
-        console.log(token);
-    
-        async function solicitarPartida(departureType) {
-            try {
-                const response = await fetch('https://api-parroquia.onrender.com/requestDeparture/', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${token}`
-                    },
-                    body: JSON.stringify({ departureType })
-                });
-    
-                if (!response.ok) {
-                    const errorData = await response.json();
-                    throw new Error(errorData.error || 'Error al solicitar la partida');
-                }
-    
-                const data = await response.json();
-                Swal.fire({
-                    title: 'Éxito',
-                    text: `Solicitud de partida de ${departureType} enviada correctamente`,
-                    icon: 'success',
-                    confirmButtonText: 'Ok'
-                });
-            } catch (error) {
-                Swal.fire({
-                    title: 'Error',
-                    text: error.message,
-                    icon: 'error',
-                    confirmButtonText: 'Ok'
-                });
-            }
-        }
-    
-        if (SolicitudPartidas) {
-            SolicitudPartidas.addEventListener('click', handleGestionMisasClick);
-        }
-    
-        if (inicioLink) {
-            inicioLink.addEventListener('click', handleInicioClick);
-        }
-    
-        if (mobileinicioLink) {
-            mobileinicioLink.addEventListener('click', handleInicioClick);
-        }
-    });    function handleInicioClick(e) {
+
+    function handleInicioClick(e) {
         e.preventDefault();
         mainContent.innerHTML = contenidoInicial;
     }
@@ -221,22 +106,20 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // Asignar el event listener para el botón de solicitud de partida (escritorio)
+    // Asignar el event listener para los botones de solicitud de partida
     if (SolicitudPartidas) {
         SolicitudPartidas.addEventListener('click', handleGestionMisasClick);
     }
 
-    // Asignar el event listener para el botón de solicitud de partida (móvil)
     if (MobileSolicitudpartidas) {
         MobileSolicitudpartidas.addEventListener('click', handleGestionMisasClick);
     }
 
-    // Asignar el event listener para el botón de inicio (escritorio)
+    // Asignar el event listener para los botones de inicio
     if (inicioLink) {
         inicioLink.addEventListener('click', handleInicioClick);
     }
 
-    // Asignar el event listener para el botón de inicio (móvil)
     if (mobileinicioLink) {
         mobileinicioLink.addEventListener('click', handleInicioClick);
     }
