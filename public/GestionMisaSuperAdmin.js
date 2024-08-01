@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     const mainContent = document.getElementById('Principal');
     const Gestionmisas = document.getElementById('Gestionmisas');
+    const MobileGestionmisas = document.getElementById('MobileGestionmisas');
 
     const contenidoInicial = mainContent.innerHTML;
 
@@ -26,44 +27,51 @@ document.addEventListener('DOMContentLoaded', function () {
             color: white;
         }
     </style>
-        <div class="d-flex flex-column w-100">
-            <div class="container mt-5">
-                    <h1 class="mb-4">Programación de Misas</h1>
-                    
-                    <!-- Sección para agregar misas -->
-                    <div class="mb-3">
-                        <label for="datePicker" class="form-label">Seleccione la fecha:</label>
-                        <input type="date" class="form-control" id="datePicker">
-                    </div>
-                    <button id="confirmDate" class="btn btn-primary mb-3">Confirmar Fecha</button>
+        
+            <div class="container mt-3" style="overflow-y: auto; overflow-x;>
+  <div class="row">
+    <div class="col-lg-8 col-md-10 col-sm-12 mx-auto">
+      <h1 class="mb-4">Programación de Misas</h1>
 
-                    <div id="timeSlots" class="d-none">
-                        <h2>Seleccione los horarios:</h2>
-                        <div id="timeSlotsContainer" class="d-flex flex-wrap"></div>
-                        <button id="saveMass" class="btn btn-success mt-3">Guardar Horarios</button>
-                    </div>
+      <!-- Sección para agregar misas -->
+      <div class="mb-3">
+        <label for="datePicker" class="form-label">Seleccione la fecha:</label>
+        <input type="date" class="form-control" id="datePicker">
+      </div>
+      <button id="confirmDate" class="btn btn-primary mb-3">Confirmar Fecha</button>
 
-                    <!-- Sección para eliminar misas -->
-                    <div id="deleteSection" class="mt-5">
-                        <h2>Eliminar Horarios</h2>
-                        <div class="mb-3">
-                            <label for="deleteDatePicker" class="form-label">Seleccione la fecha:</label>
-                            <input type="date" class="form-control" id="deleteDatePicker">
-                        </div>
-                        <button id="loadTimeSlotsToDelete" class="btn btn-primary mb-3">Cargar Horarios</button>
-                        <div id="timeSlotsToDelete" class="d-flex flex-wrap"></div>
-                        <button id="deleteSelectedSlots" class="btn btn-danger mt-3 d-none">Eliminar Seleccionados</button>
-                    </div>
-                </div>
+      <div id="timeSlots" class="d-none">
+        <h2>Seleccione los horarios:</h2>
+        <div id="timeSlotsContainer" class="d-flex flex-wrap"></div>
+        <button id="saveMass" class="btn btn-success mt-3">Guardar Horarios</button>
+      </div>
 
+      <!-- Sección para eliminar misas -->
+      <div id="deleteSection" class="mt-5">
+        <h2>Eliminar Horarios</h2>
+        <div class="mb-3">
+          <label for="deleteDatePicker" class="form-label">Seleccione la fecha:</label>
+          <input type="date" class="form-control" id="deleteDatePicker">
         </div>
+        <button id="loadTimeSlotsToDelete" class="btn btn-primary mb-3">Cargar Horarios</button>
+        <div id="timeSlotsToDelete" class="d-flex flex-wrap"></div>
+        <button id="deleteSelectedSlots" class="btn btn-danger mt-3 d-none">Eliminar Seleccionados</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        
         `;
-        mainContent.innerHTML = gestionMisasHTML;  
-        initializeMassManagement();    
+        mainContent.innerHTML = gestionMisasHTML;
+        initializeMassManagement();
     }
 
     if (Gestionmisas) {
         Gestionmisas.addEventListener('click', handleGestionMisasClick);
+    }
+    if (MobileGestionmisas) {
+        MobileGestionmisas.addEventListener('click', handleGestionMisasClick);
     }
 });
 
@@ -83,7 +91,7 @@ function initializeMassManagement() {
     datePicker.min = today;
     deleteDatePicker.min = today;
 
-    confirmDateBtn.addEventListener('click', function() {
+    confirmDateBtn.addEventListener('click', function () {
         if (datePicker.value) {
             timeSlots.classList.remove('d-none');
             generateTimeSlots();
@@ -98,22 +106,119 @@ function initializeMassManagement() {
             const timeSlot = document.createElement('div');
             timeSlot.className = 'time-slot btn btn-outline-primary';
             timeSlot.textContent = `${hour}:00`;
-            timeSlot.addEventListener('click', function() {
+            timeSlot.addEventListener('click', function () {
                 this.classList.toggle('selected');
             });
             timeSlotsContainer.appendChild(timeSlot);
         }
     }
 
-    saveMassBtn.addEventListener('click', function() {
-        // Código para guardar los horarios seleccionados
+    saveMassBtn.addEventListener('click', function () {
+        const selectedDate = datePicker.value;
+        const selectedSlots = Array.from(document.querySelectorAll('#timeSlotsContainer .time-slot.selected'))
+            .map(slot => slot.textContent);
+
+        if (selectedSlots.length === 0) {
+            alert('Por favor, seleccione al menos un horario.');
+            return;
+        }
+
+        const massData = {
+            date: selectedDate,
+            timeSlots: selectedSlots.map(time => ({ time, available: true }))
+        };
+
+        fetch('https://api-parroquia.onrender.com/massSchedule', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(massData),
+        })
+            .then(response => response.json())
+            .then(data => {
+
+                if(data.message){
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: data.message,
+                    });
+                }
+                else{
+                    console.log('Success:', data);
+                    alert('Horarios guardados con éxito.');
+                    datePicker.value = '';
+                    timeSlots.classList.add('d-none');
+                    timeSlotsContainer.innerHTML = ''; // Limpiar los horarios seleccionados
+    
+                }
+               
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                alert('Error al guardar los horarios. Por favor, intente de nuevo.');
+            });
     });
 
-    loadTimeSlotsToDeleteBtn.addEventListener('click', function() {
-        // Código para cargar los horarios a eliminar
+    loadTimeSlotsToDeleteBtn.addEventListener('click', function () {
+        const dateToDelete = deleteDatePicker.value;
+        if (!dateToDelete) {
+            alert('Por favor, seleccione una fecha para cargar horarios.');
+            return;
+        }
+
+        fetch(`https://api-parroquia.onrender.com/massSchedule/time-slots?date=${dateToDelete}`)
+            .then(response => response.json())
+            .then(data => {
+                timeSlotsToDelete.innerHTML = '';
+                if (data.timeSlots && data.timeSlots.length > 0) {
+                    data.timeSlots.forEach(slot => {
+                        const timeSlot = document.createElement('div');
+                        timeSlot.className = 'time-slot btn btn-outline-danger';
+                        timeSlot.textContent = slot.time;
+                        timeSlot.addEventListener('click', function () {
+                            this.classList.toggle('selected');
+                        });
+                        timeSlotsToDelete.appendChild(timeSlot);
+                    });
+                    deleteSelectedSlotsBtn.classList.remove('d-none');
+                } else {
+                    timeSlotsToDelete.innerHTML = '<p>No hay horarios disponibles para esta fecha.</p>';
+                    deleteSelectedSlotsBtn.classList.add('d-none');
+                }
+            })
+            .catch(error => {
+                console.error('Error al cargar los horarios:', error);
+                alert('Error al cargar los horarios. Por favor, intente de nuevo.');
+            });
     });
 
-    deleteSelectedSlotsBtn.addEventListener('click', function() {
-        // Código para eliminar los horarios seleccionados
+    deleteSelectedSlotsBtn.addEventListener('click', function () {
+        const dateToDelete = deleteDatePicker.value;
+        const slotsToDelete = Array.from(document.querySelectorAll('#timeSlotsToDelete .time-slot.selected'))
+            .map(slot => slot.textContent);
+
+        if (slotsToDelete.length === 0) {
+            alert('Por favor, seleccione al menos un horario para eliminar.');
+            return;
+        }
+
+        fetch('https://api-parroquia.onrender.com/massSchedule/remove-time-slots', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ date: dateToDelete, timeSlots: slotsToDelete }),
+        })
+            .then(response => response.json())
+            .then(data => {
+                alert('Horarios seleccionados eliminados.');
+                loadTimeSlotsToDeleteBtn.click(); // Recargar los horarios
+            })
+            .catch((error) => {
+                console.error('Error al eliminar los horarios:', error);
+                alert('Error al eliminar los horarios. Por favor, intente de nuevo.');
+            });
     });
 }
