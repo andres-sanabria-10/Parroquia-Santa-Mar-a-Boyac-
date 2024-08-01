@@ -7,6 +7,25 @@ document.addEventListener('DOMContentLoaded', function () {
     function handleGestionMisasClick(e) {
         e.preventDefault();
         const gestionMisasHTML = `
+        <style>
+        .time-slot {
+            width: 100px;
+            height: 50px;
+            margin: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+        .time-slot.selected {
+            background-color: #007bff;
+            color: white;
+        }
+        .time-slot.unavailable {
+            background-color: #dc3545;
+            color: white;
+        }
+    </style>
         <div class="d-flex flex-column w-100">
             <div class="container mt-5">
                     <h1 class="mb-4">Programación de Misas</h1>
@@ -39,13 +58,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         </div>
         `;
-
-        mainContent.innerHTML = gestionMisasHTML;
-
-        const formularioMisa = document.getElementById('formularioMisa');
-        if (formularioMisa) {
-            formularioMisa.addEventListener('submit', programarMisa);
-        }
+        mainContent.innerHTML = gestionMisasHTML;  
+        initializeMassManagement();    
     }
 
     if (Gestionmisas) {
@@ -53,7 +67,53 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
-function programarMisa(e) {
-    e.preventDefault();
-    // Lógica para programar la misa aquí
+function initializeMassManagement() {
+    const datePicker = document.getElementById('datePicker');
+    const confirmDateBtn = document.getElementById('confirmDate');
+    const timeSlots = document.getElementById('timeSlots');
+    const timeSlotsContainer = document.getElementById('timeSlotsContainer');
+    const saveMassBtn = document.getElementById('saveMass');
+    const deleteDatePicker = document.getElementById('deleteDatePicker');
+    const loadTimeSlotsToDeleteBtn = document.getElementById('loadTimeSlotsToDelete');
+    const timeSlotsToDelete = document.getElementById('timeSlotsToDelete');
+    const deleteSelectedSlotsBtn = document.getElementById('deleteSelectedSlots');
+
+    // Establecer la fecha mínima como hoy
+    const today = new Date().toISOString().split('T')[0];
+    datePicker.min = today;
+    deleteDatePicker.min = today;
+
+    confirmDateBtn.addEventListener('click', function() {
+        if (datePicker.value) {
+            timeSlots.classList.remove('d-none');
+            generateTimeSlots();
+        } else {
+            alert('Por favor, seleccione una fecha.');
+        }
+    });
+
+    function generateTimeSlots() {
+        timeSlotsContainer.innerHTML = '';
+        for (let hour = 8; hour <= 18; hour++) {
+            const timeSlot = document.createElement('div');
+            timeSlot.className = 'time-slot btn btn-outline-primary';
+            timeSlot.textContent = `${hour}:00`;
+            timeSlot.addEventListener('click', function() {
+                this.classList.toggle('selected');
+            });
+            timeSlotsContainer.appendChild(timeSlot);
+        }
+    }
+
+    saveMassBtn.addEventListener('click', function() {
+        // Código para guardar los horarios seleccionados
+    });
+
+    loadTimeSlotsToDeleteBtn.addEventListener('click', function() {
+        // Código para cargar los horarios a eliminar
+    });
+
+    deleteSelectedSlotsBtn.addEventListener('click', function() {
+        // Código para eliminar los horarios seleccionados
+    });
 }

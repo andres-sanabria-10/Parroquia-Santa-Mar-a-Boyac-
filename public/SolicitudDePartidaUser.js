@@ -93,8 +93,13 @@ document.addEventListener('DOMContentLoaded', function () {
             Swal.fire({
                 title: 'Éxito',
                 text: `Solicitud de partida de ${departureType} enviada correctamente`,
+                text:"Para que la partida sea enviada debe pagar (parroquia, transacción) y enviar el vaucher de pago al siguiente whatsApp",
                 icon: 'success',
-                confirmButtonText: 'Ok'
+                confirmButtonText: 'Ok',
+                imageUrl: '/img/QR.png', // Reemplaza con la URL de tu imagen
+                imageWidth: 100,  // Ajusta el tamaño según sea necesario
+                imageHeight: 100, // Ajusta el tamaño según sea necesario
+                imageAlt: 'Imagen de éxito'
             });
         } catch (error) {
             Swal.fire({

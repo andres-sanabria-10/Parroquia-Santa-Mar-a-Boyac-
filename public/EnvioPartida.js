@@ -7,23 +7,24 @@ document.addEventListener('DOMContentLoaded', function () {
     function handleEnvioPartidaClick(e) {
         e.preventDefault();
         const partidasPendientesHtml = `
-        <div class="container mt-4">
+        <div class="container mt-4" style="overflow-y: auto; overflow-x;" >
             <div>
                 <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     Abrir Modal
                 </button>
             </div>
-            <div class="table-responsive mt-4">
+            <div class="table-responsive mt-4" >
                 <h5 class="text-center mb-3">Partidas Pendientes</h5>
-                <table class="table" id ="tablaPendientes">
+                <table class="table table-striped table-bordered" id ="tablaPendientes">
                     <thead>
                         <tr>
                             <th scope="col">Nombre</th>
                             <th scope="col">Apellido</th>
                             <th scope="col">Tipo de partida</th>
                             <th scope="col">Fecha</th>
-                             <th scope="col">Estado</th>
+                            <th scope="col">Estado</th>
                             <th scope="col">Enviar</th>
+                            <th scope="col">Eliminar</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -127,6 +128,11 @@ function cargarPartidasPendientes() {
                         Enviar
                     </button>
                 </td>
+                <td>
+                    <button class="btn btn-primary btn-sm" onclick="EliminarPartida('${partida._id}')">
+                        Eliminar
+                    </button>
+                </td>
             `;
                 tbody.appendChild(row);
             });
@@ -185,33 +191,72 @@ function enviarPartida(partidaId) {
             'Authorization': `Bearer ${localStorage.getItem('tokenSession')}`
         },
     })
-    .then(response => {
-        console.log('Respuesta recibida:', response);
-        if (!response.ok) {
-            return response.json().then(err => {
-                console.error('Error en la respuesta:', err);
-                throw new Error(err.message || `Error al enviar la partida. Estado: ${response.status}`);
+        .then(response => {
+            console.log('Respuesta recibida:', response);
+            if (!response.ok) {
+                return response.json().then(err => {
+                    console.error('Error en la respuesta:', err);
+                    throw new Error(err.message || `Error al enviar la partida. Estado: ${response.status}`);
+                });
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Partida enviada exitosamente:', data);
+            Swal.fire({
+                icon: 'success',
+                title: 'Éxito',
+                text: 'La partida fue enviada correctamente',
+            }).then(() => {
+                cargarPartidasPendientes();
+                cargarPartidasEnviadas();
             });
-        }
-        return response.json();
-    })
-    .then(data => {
-        console.log('Partida enviada exitosamente:', data);
-        Swal.fire({
-            icon: 'success',
-            title: 'Éxito',
-            text: 'La partida fue enviada correctamente',
-        }).then(() => {
-            cargarPartidasPendientes();
-            cargarPartidasEnviadas();
+        })
+        .catch(error => {
+            console.error('Error detallado al enviar la partida:', error);
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: error.message || 'Ocurrió un error al enviar la partida',
+            });
         });
+}
+function EliminarPartida(partidaId) {
+    console.log('Intentando eliminar partida con ID:', partidaId);
+    fetch(`https://api-parroquia.onrender.com/requestDeparture/${partidaId}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('tokenSession')}`
+        },
     })
-    .catch(error => {
-        console.error('Error detallado al enviar la partida:', error);
-        Swal.fire({
-            icon: 'error',
-            title: 'Error',
-            text: error.message || 'Ocurrió un error al enviar la partida',
+        .then(response => {
+            console.log('Respuesta recibida:', response);
+            if (!response.ok) {
+                return response.json().then(err => {
+                    console.error('Error en la respuesta:', err);
+                    throw new Error(err.message || `Error al eliminar la partida. Estado: ${response.status}`);
+                });
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Partida eliminada exitosamente:', data);
+            Swal.fire({
+                icon: 'success',
+                title: 'Éxito',
+                text: data.message || 'La partida fue eliminada correctamente',
+            }).then(() => {
+                cargarPartidasPendientes();
+                cargarPartidasEnviadas();
+            });
+        })
+        .catch(error => {
+            console.error('Error detallado al eliminar la partida:', error);
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: error.message || 'Ocurrió un error al eliminar la partida',
+            });
         });
-    });
 }
