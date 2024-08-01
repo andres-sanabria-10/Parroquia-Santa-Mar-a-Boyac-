@@ -303,7 +303,7 @@ function SolicitarMisa() {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
+                    'Authorization': `Bearer ${localStorage.getItem('tokenSession')}`
             },
             body: JSON.stringify({
                 date: fecha,
