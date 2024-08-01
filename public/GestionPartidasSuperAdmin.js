@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function handleAdminClickGesionPartidas(e) {
         e.preventDefault();
         const registrationFormHTML = `
-        <div class="d-flex flex-column w-100">
+        <div class="d-flex flex-column w-100" style="background-image: url('/img/fondo.jpeg'); background-size: cover; background-position: center;">
                     <div class="container mt-3 text-center" style="background-color: #f8f9fa;">
                         <button type="button" class="btn btn-outline-primary mx-2 mt-2" data-bs-toggle="collapse"
                             data-bs-target="#bautismosCard" aria-expanded="false" aria-controls="bautismosCard"
@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     <!-- Card de bautismos -->
                     <!-- Contenedor colapsable -->
                     <div class="collapse" id="bautismosCard" style="max-height: 100vh; overflow-y: auto;">
-                        <div class="container mt-3 pb-4 text-center" style="background-color: #45709b;">
+                        <div class="container mt-3 pb-4 text-center" >
                             <div class="card mt-3">
                                 <div class="card-body">
                                     <h5 class="card-title">Baustimos</h5>
