@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function handleAdminClickGesionPartidas(e) {
         e.preventDefault();
         const registrationFormHTML = `
-        <div class="d-flex flex-column w-100" style="background-image: url('/img/fondo.jpeg'); background-size: cover; background-position: center;">
+        <div class="d-flex flex-column w-100" style="background-image: url('/img/fondo.png');  background-position: center; background-repeat: no-repeat;"" >
                     <div class="container mt-3 text-center" style="background-color: #f8f9fa;">
                         <button type="button" class="btn btn-outline-primary mx-2 mt-2" data-bs-toggle="collapse"
                             data-bs-target="#bautismosCard" aria-expanded="false" aria-controls="bautismosCard"

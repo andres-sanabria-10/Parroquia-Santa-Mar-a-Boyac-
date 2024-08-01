@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 </button>
             </div>
             <div class="table-responsive mt-4" >
-                <h5 class="text-center mb-3">Partidas Pendientes</h5>
+                <h5 class="text-center mb-3">Misas Pendientes</h5>
                 <table class="table table-striped table-bordered" id ="tablaPendientes">
                     <thead>
                         <tr>
@@ -40,12 +40,12 @@ document.addEventListener('DOMContentLoaded', function () {
            <div class="modal-dialog modal-lg">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Partidas enviadas</h5>
+                                <h5 class="modal-title" id="exampleModalLabel">Misas confirmadas </h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
                                 <!-- Título de la tabla en el modal -->
-                                <h5 class="mb-3">Partidas enviadas al correo electrónico</h5>
+                               
                                 <div class="table-responsive">
                                     <table class="table" id ="tablaEnviadas" >
                                         <thead>
@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                                 <th scope="col">Nombre</th>
                                                 <th scope="col">Apellido</th>
                                                 <th scope="col">Fecha</th>
-                                                <th scope="col">time</th>
+                                                <th scope="col">Hora</th>
                                                 <th scope="col">Estado</th>
                                             </tr>
                                         </thead>
@@ -126,7 +126,7 @@ function cargarMisaPendientes() {
                 <td>${partida.status}</td>
                 <td>
                     <button class="btn btn-primary btn-sm" onclick="enviarMisa('${partida._id}')">
-                        Enviar
+                        Confirmar
                     </button>
                 </td>
                 <td>

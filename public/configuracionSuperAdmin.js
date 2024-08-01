@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const contenidoInicial = `
         <div class="container px-5 my-5 text-center">
             <img src="/img/parroquiaSantaMaria.png" class="img-fluid" alt="">
-             <h1>Configuración</h1>
+           
              
         </div>
     `;

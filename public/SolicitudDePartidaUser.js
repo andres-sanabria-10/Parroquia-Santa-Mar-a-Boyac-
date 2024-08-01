@@ -3,7 +3,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const SolicitudPartidas = document.getElementById('SolicitudDePartidas');
     const MobileSolicitudpartidas = document.getElementById('MobileAdminLink');
     const inicioLink = document.getElementById('inicioLink');
-   
+    const MobileinicioLink = document.getElementById('MobileinicioLink');
+
 
     const contenidoInicial = `
         <div class="container px-5 my-5 text-center">
@@ -124,6 +125,8 @@ document.addEventListener('DOMContentLoaded', function () {
     if (inicioLink) {
         inicioLink.addEventListener('click', handleInicioClick);
     }
-
+    if (MobileinicioLink) {
+        MobileinicioLink.addEventListener('click', handleInicioClick);
+    }
     
 });
