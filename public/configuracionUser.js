@@ -1,8 +1,9 @@
 document.addEventListener('DOMContentLoaded', function () {
     const mainContent = document.getElementById('Principal');
     const configuracionLink = document.getElementById('configuracion');
-    const inicioLink = document.getElementById('inicioLink');
-    const mobileinicioLink = document.getElementById('MobileinicioLink');
+   
+   
+    const MobilePeril = document.getElementById('MobilePerfil');
 
 
     const contenidoInicial = `
@@ -152,14 +153,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-    if (mobileinicioLink) {
-        mobileinicioLink.addEventListener('click', handleConfiguracionClick);
+    
+    if (MobilePeril) {
+        MobilePeril.addEventListener('click', handleConfiguracionClick);
     }
 
 
 
-    if (inicioLink) {
-        inicioLink.addEventListener('click', handleInicioClick);
-    }
+    
 
 });
