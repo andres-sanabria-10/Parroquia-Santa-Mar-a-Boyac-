@@ -125,7 +125,5 @@ document.addEventListener('DOMContentLoaded', function () {
         inicioLink.addEventListener('click', handleInicioClick);
     }
 
-    if (mobileinicioLink) {
-        mobileinicioLink.addEventListener('click', handleInicioClick);
-    }
+    
 });
