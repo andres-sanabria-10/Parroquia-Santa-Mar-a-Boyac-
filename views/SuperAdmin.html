@@ -14,7 +14,7 @@
 
 
     <link rel="stylesheet" href="css/styleSuperAdmin.css">
-    <link rel="stylesheet" href="css/Stylecalender.css">
+
 
 
 </head>
@@ -30,11 +30,12 @@
                     <div class="container d-none d-sm-block">
                         <a href="/"
                             class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none custom-img-container">
-                            <div class="w-100 w-sm-75 w-md-50 w-lg-25">
-                                <img src="/img/sacerdoteSidebar.png" class="img-fluid" alt="">
+                            <div class="responsive-width">
+                                <img src="/img/sacerdoteSidebar.png" class="img-fluid" alt="" style="height: 10%;">
                             </div>
                         </a>
                     </div>
+
                     <div class="d-flex justify-content-center">
                         <span class="fs-4">Sacerdote</span>
                     </div>
@@ -58,6 +59,11 @@
                             <a id="GestionPartidasAdmin" href="#"
                                 class="nav-dark btn btn-light d-flex align-items-center">
                                 <i class="bi bi-book me-2"></i> Gestión de partidas
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a id="EnvioPartida" href="#" class="nav-dark btn btn-light d-flex align-items-center">
+                                <i class="bi bi-book me-2"></i> Envío Partida
                             </a>
                         </li>
                         <li class="nav-item">
@@ -124,6 +130,12 @@
                                 </a>
                             </li>
                             <li class="nav-item">
+                                <a href="#" id="MobileEnvioPartida"
+                                    class="nav-dark btn btn-light d-flex align-items-center" aria-current="page">
+                                    <i class="bi bi-book me-2"></i> Envío Partida
+                                </a>
+                            </li>
+                            <li class="nav-item">
                                 <a href="#" class="nav-dark btn btn-light d-flex align-items-center">
                                     <i class="bi bi-calendar me-2"></i> Gestion de Misas
                                 </a>
@@ -169,6 +181,7 @@
         </div>
     </div>
 
+    <script src="EnvioPartida.js"></script>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="RegisterSecretary.js"> </script>
@@ -282,11 +295,11 @@
     </script>
 
 
-   
 
-    
 
-    
+
+
+
 
 </body>
 

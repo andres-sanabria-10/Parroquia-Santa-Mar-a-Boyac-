@@ -2,13 +2,24 @@ body{
     height: 100%;
     width: 100%;
     overflow-x: hidden;
+    position: fixed;
+    
 
 }
 
 .sidebar {
     height: 100vh;
     background-color: #E9D7F0;
+    
 }
+@media (max-width: 1500px) {
+    .responsive-width {
+        width: 80%; /* Ajusta el ancho del contenedor según tus necesidades */
+    }
+}
+
+
+
 
 .custom-main {
     background-color: aqua;
