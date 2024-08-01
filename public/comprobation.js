@@ -1,35 +1,35 @@
 document.addEventListener('DOMContentLoaded', function() {
     const tokenSession = localStorage.getItem('tokenSession');
     if (!tokenSession) {
-        window.location.href = '/';
+        window.location.href = '/'; // Redirige si no hay token
         return;
     }
-    
-    // Verificar el token con el backend
-    authenticatedFetch('https://api-parroquia.onrender.com/accessRole/user', {
-        method: 'GET'
+
+    // Usa la URL correcta para tu entorno local
+    fetch('http://localhost:3200/accessRole/user', {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${tokenSession}`
+        },
     })
-    
-    .then(response => response.json())
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Respuesta de red no fue ok');
+        }
+        return response.json();
+    })
     .then(data => {
-        if (data.role !== 'Usuario') {
-            // Si el rol no es "Usuario", redirige al inicio o muestra un error
+        if (data.message !== "Acceso permitido a la ruta Usuario") {
             throw new Error('Rol no autorizado');
         }
-        // El token es válido y el rol es correcto, cargar el contenido de la página
-        loadUserContent(); // Asegúrate de tener definida esta función si quieres cargar contenido específico
+        // Si llegamos aquí, el usuario tiene el rol correcto
+        window.location.href = '/user';
+        console.log('Acceso permitido');
+
     })
     .catch(error => {
         console.error('Error de autenticación:', error);
-        window.location.href = '/';
+        window.location.href = '/'; // Redirige en caso de error o rol incorrecto
     });
 });
-
-// Definición de la función authenticatedFetch
-function authenticatedFetch(url, options) {
-    const tokenSession = localStorage.getItem('tokenSession');
-    options.headers = options.headers || {};
-    options.headers['Authorization'] = `Bearer ${tokenSession}`;
-    
-    return fetch(url, options);
-}
